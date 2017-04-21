@@ -1,0 +1,388 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>js闭包 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="本文讲述Javascript的闭包。
+引言(简单了解js闭包)在讲述js闭包之前，我们先来说一个简单的例子:
+1234567var a = 1;function fn()&amp;#123;	var b = 2;	console.log(&quot;a: &quot; + a + &quot;, b: &quot; + b);&amp;#125;fn()">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/07/js闭包/" title="js闭包" itemprop="url">js闭包</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-03-07T09:26:10.000Z" itemprop="datePublished">2017-03-07</time>
+    Updated:<time datetime="2017-03-09T03:40:11.558Z" itemprop="dateModified">2017-03-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言-简单了解js闭包"><span class="toc-number">1.</span> <span class="toc-text">引言(简单了解js闭包)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正题-js闭包讲解"><span class="toc-number">2.</span> <span class="toc-text">正题(js闭包讲解)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js闭包概念："><span class="toc-number">2.1.</span> <span class="toc-text">js闭包概念：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提升-this指向问题"><span class="toc-number">3.</span> <span class="toc-text">提升(this指向问题)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包的优点"><span class="toc-number">4.</span> <span class="toc-text">闭包的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充-js闭包内存问题"><span class="toc-number">5.</span> <span class="toc-text">补充(js闭包内存问题)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题外-全局变量和局部变量"><span class="toc-number">6.</span> <span class="toc-text">题外(全局变量和局部变量)</span></a></li></ol>
+		</div>
+		
+		<p>本文讲述Javascript的闭包。</p>
+<h2 id="引言-简单了解js闭包"><a href="#引言-简单了解js闭包" class="headerlink" title="引言(简单了解js闭包)"></a>引言(简单了解js闭包)</h2><p>在讲述js闭包之前，我们先来说一个简单的例子:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">	var b = 2;</div><div class="line">	console.log(<span class="string">"a: "</span> + a + <span class="string">", b: "</span> + b);</div><div class="line">&#125;</div><div class="line">fn();	//a: 1, b: 2</div><div class="line">console.log(<span class="string">"a: "</span> + a + <span class="string">", b: "</span> + b);	//a: 1, b: undefined</div></pre></td></tr></table></figure>
+<p>这个相信大家都可以理解，就是变量的作用域，a为定义的全局变量，b为函数fn内部定义的变量,在函数内部，可以获取到全局变量a的值和函数局部变量b的值。在函数外部，不能获取到局部变量b的值。但是，如果我确实想得到函数fn内部的b元素的值呢？</p>
+<p>想一想，这个fn其实是一个方法，既然是个方法，那应该可以给这个方法设置一个返回值吧，那如果将这个函数的返回值设置为b元素，会发生什么情况呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">	var b = 5;</div><div class="line">	<span class="built_in">return</span> b;</div><div class="line">&#125;</div><div class="line">console.log(fn());	//5</div></pre></td></tr></table></figure>
+<p>实践证明，这样是可以获取到b元素值的。没错，这就是最简单的js闭包。</p>
+<h2 id="正题-js闭包讲解"><a href="#正题-js闭包讲解" class="headerlink" title="正题(js闭包讲解)"></a>正题(js闭包讲解)</h2><h3 id="js闭包概念："><a href="#js闭包概念：" class="headerlink" title="js闭包概念："></a>js闭包概念：</h3><p>官方对闭包的解释是：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。</p>
+<p>是不是有点看不懂？</p>
+<p>其实，js闭包就是在外部可以访问函数内部的局部变量、参数或声明的其他内部函数。</p>
+<p>可能你会说，那这个算不算闭包呢：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">	var a = 1;</div><div class="line">	</div><div class="line">	f2(a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">function</span> f2(m)&#123;</div><div class="line">	console.log(m);</div><div class="line">&#125;</div><div class="line"></div><div class="line">f1();	//1</div></pre></td></tr></table></figure>
+<p>那么，你觉得下边这个函数和上边的有什么区别呢:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</div><div class="line">	var a = 1;</div><div class="line">	console.log(a);	</div><div class="line">&#125;</div><div class="line">f1();	//1</div></pre></td></tr></table></figure>
+<p>这个函数和上边的函数其实并没有什么区别，完全可以合并为同一个函数。只不过有时候为了实现代码模块化或组件化，于是将通用的方法封装了起来，以便于方法的重用，所以它并不是闭包。</p>
+<p>既然我们已经看到了比较简单的js闭包，那么我们再来加一点难度，看一下下面这段代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var name = <span class="string">'张三'</span>;</div><div class="line">var Comp = &#123;</div><div class="line">	name : <span class="string">'小张'</span>,</div><div class="line">	getName : <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		<span class="built_in">return</span> this.name;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(Comp.getName());	//小张</div></pre></td></tr></table></figure>
+<p>这个应该比较容易理解，Comp是一个对象，包含一个name属性和一个名为getName的方法，因为getName方法是属于Comp对象的，所以这个this指向Comp对象。因此调用Comp对象中的getName方法，这时候this.name的值应该是”小张”。</p>
+<p>再加深一点难度：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = <span class="string">'张三'</span>;</div><div class="line">var Comp = &#123;</div><div class="line">	name : <span class="string">'小张'</span>,</div><div class="line">	getName : <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		var here = this;</div><div class="line">		<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			<span class="built_in">return</span> here.name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(Comp.getName()());	//小张</div></pre></td></tr></table></figure>
+<p>在这段代码中，定义了here作为getName()方法的局部变量，所以here指的对象并不是window对象，而是Comp对象。但是，由于返回值中有here，所以这个局部变量就一直存在内存中，当调用Comp.getName()()这个方法时，将here从内存中取出来，由于here指的就是Comp对象，所以返回的值就是Comp.name的值。</p>
+<h2 id="提升-this指向问题"><a href="#提升-this指向问题" class="headerlink" title="提升(this指向问题)"></a>提升(this指向问题)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = <span class="string">'张三'</span>;</div><div class="line">var Comp = &#123;</div><div class="line">	name : <span class="string">'小张'</span>,</div><div class="line">	getName : <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			<span class="built_in">return</span> this.name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">console.log(Comp.getName()());	//张三</div></pre></td></tr></table></figure>
+<p>为什么这个函数中的this.name返回的是”张三”呢？我们可以先试着运行一下这个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(Comp.getName());	//<span class="function"><span class="title">function</span></span> ()&#123;	<span class="built_in">return</span> this.name;	&#125;</div></pre></td></tr></table></figure>
+<p>这段代码输出的是一段字符串，而这段字符串是一个匿名函数，而且此时并没有执行这个方法，仅仅是返回了构成这个方法的字符串而已。然后调用这段字符串构成的方法，也就相当于调用window下的一个匿名函数。那这样说的话，是不是我可以将上边这个函数改成这个样子呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = <span class="string">'张三'</span>;</div><div class="line">var Comp = &#123;</div><div class="line">	name : <span class="string">'小张'</span>,</div><div class="line">	getName : <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		<span class="built_in">return</span> noNameFun;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var noNameFun = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	<span class="built_in">return</span> this.name;</div><div class="line">&#125;</div><div class="line">console.log(Comp.getName()());	//张三</div></pre></td></tr></table></figure>
+<p>可以看出，这个函数确实输出的是”张三”,也就是说和上边这个函数是一样的。那我们就明白了，noNameFun()是属于window对象的，那么这个方法的this也属于window对象，所以this.name就代表的是”张三”。</p>
+<h2 id="闭包的优点"><a href="#闭包的优点" class="headerlink" title="闭包的优点"></a>闭包的优点</h2><p>闭包的优点有两个：</p>
+<ol>
+<li>可以读取函数内部的变量;</li>
+<li>让这些变量的值始终保持在内存中。</li>
+</ol>
+<h2 id="补充-js闭包内存问题"><a href="#补充-js闭包内存问题" class="headerlink" title="补充(js闭包内存问题)"></a>补充(js闭包内存问题)</h2><p>在我们的使用中，很多时候都会用到js闭包的概念，尤其是模块化开发。然而，js闭包虽然好用的，但是任何事物都有它的两面性，变量保持在内存中是优点，但也存在这样一个问题：</p>
+<p>由于闭包会是函数中的变量一直存在于内存中，导致内存被占用，而如果这样的变量多了的话，会使内存消耗很大。所以，不能滥用闭包，否则会是网页性能变得很差，而且在IE中，有可能导致内存泄露。</p>
+<p>什么是内存被占用，我举个例子来说一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">	var n = 1;</div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">add</span></span>()&#123;</div><div class="line">		n += 1;</div><div class="line">		console.log(n);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> add;</div><div class="line">&#125;</div><div class="line">var result = fn();</div><div class="line">result();	//2</div><div class="line">result();	//3</div><div class="line">result();	//4</div><div class="line">result();	//5</div><div class="line">result();	//6</div></pre></td></tr></table></figure>
+<p>也就是说，这个变量n是一直存在于内存中的，所以每次调用，n就会加1。</p>
+<h2 id="题外-全局变量和局部变量"><a href="#题外-全局变量和局部变量" class="headerlink" title="题外(全局变量和局部变量)"></a>题外(全局变量和局部变量)</h2><p>对于全局变量和局部变量，有些新手可能不太明白。</p>
+<p>外部声明的变量属于全局变量，方法内部声明的变量属于局部变量。但是如果在方法内部没有用var来声明一个变量，那这个变量应该也是一个全局变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var n = 1;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">	var m = 5;</div><div class="line">	t = 10;</div><div class="line">	console.log(m);</div><div class="line">&#125;</div><div class="line"></div><div class="line">console.log(n);	//5</div><div class="line">console.log(m);	//undefined</div><div class="line">console.log(t);	//undefined</div><div class="line">fn();			//5</div><div class="line">console.log(m);	//undefined</div><div class="line">console.log(t);	//10</div></pre></td></tr></table></figure>
+<p>为什么在执行fn()函数之前打印”t”这个全局变量会输出”undefined”呢？这个”t”到底是不是全局变量？</p>
+<p>我们可以想一下，我现在声明了一个函数，但是我只是定义了这个函数，并没有调用它。那么这个函数内部的方法是不会执行的，也就是说，在我调用方法fn()之前，这个”t”是并没有被声明的，既然没有被声明，那就肯定会输出”undefined”。但是在调用了fn()函数之后，也就执行了函数内部的方法，即：声明了”t”变量。之后，就肯定可以获取到”t”这个全局变量啦。</p>
+<p>对于函数里的方法也是一样的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">	var n = 1;</div><div class="line">	nAdd = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		n += 1;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">f</span></span>()&#123;</div><div class="line">		console.log(n);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> f;</div><div class="line">&#125;</div><div class="line">//nAdd();	//undefined</div><div class="line">var result = fn();</div><div class="line">result();	//1</div><div class="line">nAdd();</div><div class="line">result();	//2</div><div class="line">nAdd();</div><div class="line">result();	//3</div></pre></td></tr></table></figure>
+<p>本章节完！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Javascript/">Javascript</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2017/03/07/js闭包/" data-title="js闭包 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/03/24/css弹性布局-flex布局/" title="css弹性布局-flex布局">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  css弹性布局-flex布局</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/02/27/js容易混淆的几个函数/"  title="js容易混淆的几个函数">
+ <strong>NEXT:</strong><br/> 
+ <span>js容易混淆的几个函数
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言-简单了解js闭包"><span class="toc-number">1.</span> <span class="toc-text">引言(简单了解js闭包)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正题-js闭包讲解"><span class="toc-number">2.</span> <span class="toc-text">正题(js闭包讲解)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#js闭包概念："><span class="toc-number">2.1.</span> <span class="toc-text">js闭包概念：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提升-this指向问题"><span class="toc-number">3.</span> <span class="toc-text">提升(this指向问题)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包的优点"><span class="toc-number">4.</span> <span class="toc-text">闭包的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充-js闭包内存问题"><span class="toc-number">5.</span> <span class="toc-text">补充(js闭包内存问题)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题外-全局变量和局部变量"><span class="toc-number">6.</span> <span class="toc-text">题外(全局变量和局部变量)</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>5</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

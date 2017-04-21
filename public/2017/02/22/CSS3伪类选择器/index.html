@@ -1,0 +1,415 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS3伪类选择器 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="本文主要针对伪类选择器的使用进行说明，伪类选择器可以动态的对页面的内容进行样式化，目前有16个强大的新伪类选择器被列入最新的W3C规范中。
+早期伪类选择器CSS1时期(1996年)就被纳入规范中的伪类选择器,也是我们最常用到的选择器,这些选择器最常被用到 “a” 标签中。
+1234:link:vis">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/22/CSS3伪类选择器/" title="CSS3伪类选择器" itemprop="url">CSS3伪类选择器</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-02-22T11:58:26.000Z" itemprop="datePublished">2017-02-22</time>
+    Updated:<time datetime="2017-02-22T13:34:39.667Z" itemprop="dateModified">2017-02-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#早期伪类选择器"><span class="toc-number">1.</span> <span class="toc-text">早期伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2时期引入的伪类选择器"><span class="toc-number">2.</span> <span class="toc-text">CSS2时期引入的伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3时代"><span class="toc-number">3.</span> <span class="toc-text">CSS3时代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#结构伪类"><span class="toc-number">3.1.</span> <span class="toc-text">结构伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#root"><span class="toc-number">3.1.1.</span> <span class="toc-text">root</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-child-n"><span class="toc-number">3.1.2.</span> <span class="toc-text">nth-child(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-last-child-n"><span class="toc-number">3.1.3.</span> <span class="toc-text">nth-last-child(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-of-type-n"><span class="toc-number">3.1.4.</span> <span class="toc-text">nth-of-type(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-last-of-type-n"><span class="toc-number">3.1.5.</span> <span class="toc-text">nth-last-of-type(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#first-of-type"><span class="toc-number">3.1.6.</span> <span class="toc-text">first-of-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#last-of-type"><span class="toc-number">3.1.7.</span> <span class="toc-text">last-of-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#only-of-type"><span class="toc-number">3.1.8.</span> <span class="toc-text">only-of-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#last-child"><span class="toc-number">3.1.9.</span> <span class="toc-text">last-child</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#only-child"><span class="toc-number">3.1.10.</span> <span class="toc-text">only-child</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#empty"><span class="toc-number">3.1.11.</span> <span class="toc-text">empty</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目标伪类"><span class="toc-number">3.2.</span> <span class="toc-text">目标伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#target"><span class="toc-number">3.2.1.</span> <span class="toc-text">target</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元素状态伪类"><span class="toc-number">3.3.</span> <span class="toc-text">元素状态伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#enabled"><span class="toc-number">3.3.1.</span> <span class="toc-text">enabled</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#disabled"><span class="toc-number">3.3.2.</span> <span class="toc-text">disabled</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#checked"><span class="toc-number">3.3.3.</span> <span class="toc-text">checked</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#否定伪类选择器"><span class="toc-number">3.4.</span> <span class="toc-text">否定伪类选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#not"><span class="toc-number">3.4.1.</span> <span class="toc-text">not</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+		</div>
+		
+		<p>本文主要针对伪类选择器的使用进行说明，伪类选择器可以动态的对页面的内容进行样式化，目前有16个强大的新伪类选择器被列入最新的W3C规范中。</p>
+<h2 id="早期伪类选择器"><a href="#早期伪类选择器" class="headerlink" title="早期伪类选择器"></a>早期伪类选择器</h2><p>CSS1时期(1996年)就被纳入规范中的伪类选择器,也是我们最常用到的选择器,这些选择器最常被用到 “a” 标签中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">:link</div><div class="line">:visited</div><div class="line">:hover</div><div class="line">:active</div></pre></td></tr></table></figure>
+<ol>
+<li>:link 为链接平常的状态。</li>
+<li>:visited 链接被访问过后的状态。</li>
+<li>:hover 鼠标放在链接上时的状态。</li>
+<li>:active 鼠标被按下，还未松开鼠标时的状态。</li>
+</ol>
+<h2 id="CSS2时期引入的伪类选择器"><a href="#CSS2时期引入的伪类选择器" class="headerlink" title="CSS2时期引入的伪类选择器"></a>CSS2时期引入的伪类选择器</h2><p>CSS2规范实在1998年5月发布的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:lang</div><div class="line">:first-child</div></pre></td></tr></table></figure>
+<ol>
+<li>:lang 指明一个文档所使用的语言。类似于</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>:first-child 指明父元素下的一组同级元素中的第一个。</li>
+</ol>
+<h2 id="CSS3时代"><a href="#CSS3时代" class="headerlink" title="CSS3时代"></a>CSS3时代</h2><h3 id="结构伪类"><a href="#结构伪类" class="headerlink" title="结构伪类"></a>结构伪类</h3><h4 id="root"><a href="#root" class="headerlink" title="root"></a>root</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:root</div></pre></td></tr></table></figure>
+<p>:root 伪类选择器表示页面的根元素。即 &lt; html &rt; 元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:nth-child(n)</div></pre></td></tr></table></figure>
+<h4 id="nth-child-n"><a href="#nth-child-n" class="headerlink" title="nth-child(n)"></a>nth-child(n)</h4><p>:nth-child(n) 伪类选择器表示第n个子元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li&gt;1&lt;/li&gt; ------- li:nth-child(1)</div><div class="line">	&lt;li&gt;2&lt;/li&gt; ------- li:nth-child(2)</div><div class="line">	&lt;li&gt;3&lt;/li&gt; ------- li:nth-child(3)</div><div class="line">	&lt;li&gt;4&lt;/li&gt; ------- li:nth-child(4)</div><div class="line">	&lt;li&gt;5&lt;/li&gt; ------- li:nth-child(5)</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p>li:nth-child(even) 代表代码中偶数行，也可以用 li:nth-child(2n)<br>li:nth-child(odd) 代表代码中奇数行，也可以用 li:nth-child(2n+1)</p>
+<ul class="myli_nth"><li>列表第1行</li><li>列表第2行</li><li>列表第3行</li><li>列表第4行</li><li>列表第5行</li></ul>
+
+<p>可以看出，偶数行与奇数行表现的颜色不同。</p>
+<p>代码如下:</p>
+<p>html代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=<span class="string">"myli_nth"</span>&gt;</div><div class="line">	&lt;li&gt;列表第1行&lt;/li&gt;</div><div class="line">	&lt;li&gt;列表第2行&lt;/li&gt;</div><div class="line">	&lt;li&gt;列表第3行&lt;/li&gt;</div><div class="line">	&lt;li&gt;列表第4行&lt;/li&gt;</div><div class="line">	&lt;li&gt;列表第5行&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p>CSS代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.myli_nth li:nth-child(odd)&#123;</div><div class="line">	background: <span class="comment">#FFD700;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">.myli_nth li:nth-child(even)&#123;</div><div class="line">	background: <span class="comment">#BFEFFF;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>假如要选中一个列表的前3项，我们可以写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">li:nth-child(-n+3)</div></pre></td></tr></table></figure>
+<h4 id="nth-last-child-n"><a href="#nth-last-child-n" class="headerlink" title="nth-last-child(n)"></a>nth-last-child(n)</h4><p>:nth-last-child(n) 和 nth-child(n) 用法完全相同，唯一不同的就是 nth-child(n) 是从第一个开始往下算。而 :nth-last-child(n)是从最后一个往前倒着算。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">	&lt;li&gt;1&lt;/li&gt; ------- li:nth-last-child(5)</div><div class="line">	&lt;li&gt;2&lt;/li&gt; ------- li:nth-last-child(4)</div><div class="line">	&lt;li&gt;3&lt;/li&gt; ------- li:nth-last-child(3)</div><div class="line">	&lt;li&gt;4&lt;/li&gt; ------- li:nth-last-child(2)</div><div class="line">	&lt;li&gt;5&lt;/li&gt; ------- li:nth-last-child(1)</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<h4 id="nth-of-type-n"><a href="#nth-of-type-n" class="headerlink" title="nth-of-type(n)"></a>nth-of-type(n)</h4><p>:nth-of-type(n) 只针对特定类型的元素应用样式。</p>
+<p>例如：我们需要使用更大的字体来表示文章的第一个段落：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">article p:nth-of-type(1) &#123;font-size: 1.5em;&#125;</div></pre></td></tr></table></figure>
+<h4 id="nth-last-of-type-n"><a href="#nth-last-of-type-n" class="headerlink" title="nth-last-of-type(n)"></a>nth-last-of-type(n)</h4><p>同 :nth-of-type(n) 原理一样，唯一不同的就是 :nth-last-of-type(n) 是从后往前倒序工作。</p>
+<h4 id="first-of-type"><a href="#first-of-type" class="headerlink" title="first-of-type"></a>first-of-type</h4><p>相当于 :nth-of-type(1)</p>
+<h4 id="last-of-type"><a href="#last-of-type" class="headerlink" title="last-of-type"></a>last-of-type</h4><p>相当于 :nth-last-of-type(1)</p>
+<h4 id="only-of-type"><a href="#only-of-type" class="headerlink" title="only-of-type"></a>only-of-type</h4><p>这个伪类用来选择父元素下只有唯一一个某种类型的元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">	&lt;p&gt;第1个段落&lt;/p&gt;</div><div class="line">	&lt;p&gt;第2个段落&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div&gt;</div><div class="line">	&lt;p&gt;第3个段落&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>如果上面一段代码有这样一个css：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p:only-of-type&#123;color: red;&#125;</div></pre></td></tr></table></figure>
+<p>那么结果是只有第三个段落的字体颜色会变红。因为只有第三个段落的父元素div有唯一的一个p元素。</p>
+<h4 id="last-child"><a href="#last-child" class="headerlink" title="last-child"></a>last-child</h4><p>:first-child 代表的是第一个子元素。<br>:last-child 代表的是最后一个子元素。</p>
+<h4 id="only-child"><a href="#only-child" class="headerlink" title="only-child"></a>only-child</h4><p>如果一个元素是它父元素下的唯一子元素，就可以使用 :only-child 来选中该元素。</p>
+<h4 id="empty"><a href="#empty" class="headerlink" title="empty"></a>empty</h4><p>:empty 这个伪类选择器用来选择没有子元素和内容的元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#result:empty&#123;</span></div><div class="line">	background-color: <span class="comment">#f00;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以使用上边的CSS代码来表示用户搜索结果为空的情况。</p>
+<h3 id="目标伪类"><a href="#目标伪类" class="headerlink" title="目标伪类"></a>目标伪类</h3><h4 id="target"><a href="#target" class="headerlink" title="target"></a>target</h4><p>:target 这个伪类允许我们基于url对页面上的元素设置样式。如果url中有一个标识符(即以’#’开头的字符串)，那么 :target 就可以对以该标识符为id的元素进行样式设置。</p>
+<p>如果有这样一个url：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.test.com/<span class="built_in">test</span><span class="comment">#summary</span></div></pre></td></tr></table></figure>
+<p>id属性为summary的区域可以这样来写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:target&#123;</div><div class="line">	background-color: <span class="comment">#f00;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="元素状态伪类"><a href="#元素状态伪类" class="headerlink" title="元素状态伪类"></a>元素状态伪类</h3><h4 id="enabled"><a href="#enabled" class="headerlink" title="enabled"></a>enabled</h4><p>:enabled 表示元素可编辑状态时的样式。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">input:enabled&#123;</div><div class="line">	background-color: green;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>表示input输入框在可编辑状态下时背景为绿色。</p>
+<h4 id="disabled"><a href="#disabled" class="headerlink" title="disabled"></a>disabled</h4><p>:disabled 表示元素在不可编辑状态时的样式。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">input:disabled&#123;</div><div class="line">	background-color: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>表示input输入框在可编辑状态下时背景为红色。</p>
+<h4 id="checked"><a href="#checked" class="headerlink" title="checked"></a>checked</h4><p>:checked 表示单选框或多选框在选中状态下时的样式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">input[<span class="built_in">type</span>=checkbox]:checked&#123;</div><div class="line">	font-weight: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>表示多选框在选中状态下时，变为粗体。</p>
+<h3 id="否定伪类选择器"><a href="#否定伪类选择器" class="headerlink" title="否定伪类选择器"></a>否定伪类选择器</h3><h4 id="not"><a href="#not" class="headerlink" title="not"></a>not</h4><p>:not 选择器表示除指定元素外的所有元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">:not(header)&#123;</div><div class="line">	background-color: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>表示页面上除了 header 元素以外的所有元素。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>一般的项目中，可能我们用到的伪类选择器就那么几个，但是其他不常用的选择器还是需要稍微了解一下，万一在用到的时候，不至于一时想不起来。</p>
+<script type="text/javascript" src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/js/my/css3_2.js"></script>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CSS3/">CSS3</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2017/02/22/CSS3伪类选择器/" data-title="CSS3伪类选择器 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/02/27/js容易混淆的几个函数/" title="js容易混淆的几个函数">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  js容易混淆的几个函数</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/02/20/hexo导入自定义css文件/"  title="hexo引入自定义css文件">
+ <strong>NEXT:</strong><br/> 
+ <span>hexo引入自定义css文件
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#早期伪类选择器"><span class="toc-number">1.</span> <span class="toc-text">早期伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2时期引入的伪类选择器"><span class="toc-number">2.</span> <span class="toc-text">CSS2时期引入的伪类选择器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3时代"><span class="toc-number">3.</span> <span class="toc-text">CSS3时代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#结构伪类"><span class="toc-number">3.1.</span> <span class="toc-text">结构伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#root"><span class="toc-number">3.1.1.</span> <span class="toc-text">root</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-child-n"><span class="toc-number">3.1.2.</span> <span class="toc-text">nth-child(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-last-child-n"><span class="toc-number">3.1.3.</span> <span class="toc-text">nth-last-child(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-of-type-n"><span class="toc-number">3.1.4.</span> <span class="toc-text">nth-of-type(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-last-of-type-n"><span class="toc-number">3.1.5.</span> <span class="toc-text">nth-last-of-type(n)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#first-of-type"><span class="toc-number">3.1.6.</span> <span class="toc-text">first-of-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#last-of-type"><span class="toc-number">3.1.7.</span> <span class="toc-text">last-of-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#only-of-type"><span class="toc-number">3.1.8.</span> <span class="toc-text">only-of-type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#last-child"><span class="toc-number">3.1.9.</span> <span class="toc-text">last-child</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#only-child"><span class="toc-number">3.1.10.</span> <span class="toc-text">only-child</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#empty"><span class="toc-number">3.1.11.</span> <span class="toc-text">empty</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目标伪类"><span class="toc-number">3.2.</span> <span class="toc-text">目标伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#target"><span class="toc-number">3.2.1.</span> <span class="toc-text">target</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#元素状态伪类"><span class="toc-number">3.3.</span> <span class="toc-text">元素状态伪类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#enabled"><span class="toc-number">3.3.1.</span> <span class="toc-text">enabled</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#disabled"><span class="toc-number">3.3.2.</span> <span class="toc-text">disabled</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#checked"><span class="toc-number">3.3.3.</span> <span class="toc-text">checked</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#否定伪类选择器"><span class="toc-number">3.4.</span> <span class="toc-text">否定伪类选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#not"><span class="toc-number">3.4.1.</span> <span class="toc-text">not</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>5</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

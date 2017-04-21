@@ -1,0 +1,787 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>css弹性布局-flex布局 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="本文介绍CSS3新增的布局方式，flex弹性布局，便于页面布局及项目。
+传统的css布局我们知道传统的css定位比较麻烦，比如垂直居中，比较难实现，但是问题比较多,很难实现自适应。
+居中
+
+代码：
+123456789101112131415161718192021// html代码&amp;lt;div c">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/24/css弹性布局-flex布局/" title="css弹性布局-flex布局" itemprop="url">css弹性布局-flex布局</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-03-24T02:51:50.000Z" itemprop="datePublished">2017-03-24</time>
+    Updated:<time datetime="2017-03-24T12:13:29.285Z" itemprop="dateModified">2017-03-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统的css布局"><span class="toc-number">1.</span> <span class="toc-text">传统的css布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex布局"><span class="toc-number">2.</span> <span class="toc-text">flex布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初识flex"><span class="toc-number">2.1.</span> <span class="toc-text">初识flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex基本概念"><span class="toc-number">2.2.</span> <span class="toc-text">flex基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex容器属性"><span class="toc-number">2.3.</span> <span class="toc-text">flex容器属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-direction"><span class="toc-number">2.3.1.</span> <span class="toc-text">flex-direction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-wrap"><span class="toc-number">2.3.2.</span> <span class="toc-text">flex-wrap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-flow"><span class="toc-number">2.3.3.</span> <span class="toc-text">flex-flow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#justify-content"><span class="toc-number">2.3.4.</span> <span class="toc-text">justify-content</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-items"><span class="toc-number">2.3.5.</span> <span class="toc-text">align-items</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-content"><span class="toc-number">2.3.6.</span> <span class="toc-text">align-content</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex容器中子元素的属性"><span class="toc-number">2.4.</span> <span class="toc-text">flex容器中子元素的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#order"><span class="toc-number">2.4.1.</span> <span class="toc-text">order</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-grow"><span class="toc-number">2.4.2.</span> <span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-shrink"><span class="toc-number">2.4.3.</span> <span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-basis"><span class="toc-number">2.4.4.</span> <span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex"><span class="toc-number">2.4.5.</span> <span class="toc-text">flex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-self"><span class="toc-number">2.4.6.</span> <span class="toc-text">align-self</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+		</div>
+		
+		<p>本文介绍CSS3新增的布局方式，flex弹性布局，便于页面布局及项目。</p>
+<h2 id="传统的css布局"><a href="#传统的css布局" class="headerlink" title="传统的css布局"></a>传统的css布局</h2><p>我们知道传统的css定位比较麻烦，比如垂直居中，比较难实现，但是问题比较多,很难实现自适应。</p>
+<div class="oldcenter"><div class="oldcenter-div">居中</div></div>
+
+<p>代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"oldcenter"</span>&gt;</div><div class="line">	&lt;div class=<span class="string">"oldcenter-div"</span>&gt;居中&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.oldcenter&#123;</div><div class="line">	border: 1px solid <span class="comment">#D53419;</span></div><div class="line">	background-color: <span class="comment">#50E9EE;</span></div><div class="line">	width: 250px;</div><div class="line">	height: 250px;</div><div class="line">	position: relative;</div><div class="line">&#125;</div><div class="line">.oldcenter-div &#123;</div><div class="line">	width: 50px;</div><div class="line">	height: 50px;</div><div class="line">	background-color: <span class="comment">#DF6A41;</span></div><div class="line">	margin: 0 auto;			//左右居中</div><div class="line">	margin-top: 50%;		//外边框距离父元素高度顶部框线50%</div><div class="line">	bottom: 25px;			//上移自身高度的一半 50/2 = 25px</div><div class="line">	position: relative;		//设置为相对父元素定位</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码可以实现居中，原理是先让子div向下移动其父元素50%的高度，再向上移动自身高度50px的一半,即25px;实现了垂直居中。代码非常冗余。</p>
+<p>而且，如果是动态添加的列表元素，居中更麻烦</p>
+<div class="oldcenter"><ul class="old-ul"><li>列表1</li><li>列表2</li><li>列表3</li><li>列表4</li><li>列表5</li></ul></div>
+
+<p>代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"oldcenter"</span>&gt;</div><div class="line">	&lt;ul class=<span class="string">"old-ul"</span>&gt;</div><div class="line">		&lt;li&gt;列表1&lt;/li&gt;</div><div class="line">		&lt;li&gt;列表2&lt;/li&gt;</div><div class="line">		&lt;li&gt;列表3&lt;/li&gt;</div><div class="line">		&lt;li&gt;列表4&lt;/li&gt;</div><div class="line">		&lt;li&gt;列表5&lt;/li&gt;</div><div class="line">	&lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.oldcenter&#123;</div><div class="line">	border: 1px solid <span class="comment">#D53419;</span></div><div class="line">	background-color: <span class="comment">#50E9EE;</span></div><div class="line">	width: 250px;</div><div class="line">	height: 250px;</div><div class="line">	position: relative;</div><div class="line">&#125;</div><div class="line">.old-ul&#123;</div><div class="line">	margin-top: 0px;</div><div class="line">	height: 250px;</div><div class="line">&#125;</div><div class="line">.old-ul&gt;li&#123;</div><div class="line">	height: 50px;</div><div class="line">	line-height: 50px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个列表样式看似简单，但是如果列表中的内容是动态添加的呢？我们应该怎样设置每一个列表项的高度和行高？不可能每添加一次就改一次css代码，是不是非常的不方便。</p>
+<p>传统的布局需要依赖于display,position,float等属性，样式调起来很不容易,所以需要改进。</p>
+<h2 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h2><p>2009年，W3C组织提出了一种新的布局方式–弹性布局，即flex布局。这种布局用少量、简单的代码，可以实现页面的响应式布局。并且如今已经得到除IE9-以外的所有浏览器的支持，完全不影响使用。</p>
+<h3 id="初识flex"><a href="#初识flex" class="headerlink" title="初识flex"></a>初识flex</h3><p>我们先来认识一下flex，看看实现传统布局中的垂直居中是否方便。</p>
+<div class="newcenter"><br>    <div class="newcenter-div">flex居中</div><br></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"newcenter"</span>&gt;</div><div class="line">	&lt;div class=<span class="string">"newcenter-div"</span>&gt;flex居中&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.newcenter&#123;</div><div class="line">	width: 250px;</div><div class="line">	height: 250px;</div><div class="line">	border: 1px solid <span class="comment">#D53419;</span></div><div class="line">	background-color: <span class="comment">#50E9EE;</span></div><div class="line">	display: flex;			//声明为flex布局</div><div class="line">	justify-content: center;//水平方向左右居中</div><div class="line">	align-items: center;	//垂直方向上下居中</div><div class="line">&#125;</div><div class="line">.newcenter-div&#123;</div><div class="line">	width: 50px;</div><div class="line">	height: 50px;</div><div class="line">	background-color: <span class="comment">#DF6A41;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>是不是觉得简单易懂，而且用起来也比较方便。</p>
+<h3 id="flex基本概念"><a href="#flex基本概念" class="headerlink" title="flex基本概念"></a>flex基本概念</h3><p>将元素的display属性设置为flex后，该元素就成为了”flex容器”,之后的操作类似于在容器中操作，它的子元素都是容器中的部分。</p>
+<h3 id="flex容器属性"><a href="#flex容器属性" class="headerlink" title="flex容器属性"></a>flex容器属性</h3><p>flex容器有6个属性</p>
+<p><strong> 为了减少重复代码，且方便读者看懂，该标题(flex容器属性)下的所有代码的css均基于以下两个class属性 </strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.parent-container&#123;</div><div class="line">	width: 400px;</div><div class="line">	height: 300px;</div><div class="line">	border: 1px solid <span class="comment">#D53419;</span></div><div class="line">	background-color: <span class="comment">#50E9EE;</span></div><div class="line">&#125;</div><div class="line">.parent-container&gt;p&#123;</div><div class="line">	width: 50px;</div><div class="line">	height: 30px;</div><div class="line">	border: 1px solid <span class="comment">#2548E7;</span></div><div class="line">	background-color: <span class="comment">#dbc21d;</span></div><div class="line">	margin: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h4><p>该属性用来定义，子元素的排列方向.</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>row</td>
+<td>水平方向，从左往右依次排列(默认值)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>row-reverse</td>
+<td>水平方向，从右往左依次排列</td>
+</tr>
+<tr>
+<td>3</td>
+<td>column</td>
+<td>垂直方向，从上往下依次排列</td>
+</tr>
+<tr>
+<td>4</td>
+<td>column-reverse</td>
+<td>垂直方向，从下往上依次排列</td>
+</tr>
+</tbody>
+</table>
+<p>1.row</p>
+<div class="parent-container container-row"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-row"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-row&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-direction: row;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.row-reverse</p>
+<div class="parent-container container-rowreverse"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-rowreverse"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-rowreverse&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-direction: row-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.column</p>
+<div class="parent-container container-column"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-column"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-column&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-direction: column;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.column-reverse</p>
+<div class="parent-container container-columnreverse"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-columnreverse"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-columnreverse&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-direction: column-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h4><p>该属性用来定义，如果子元素一排排不下，那么它的换行情况.</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>nowrap</td>
+<td>表示不换行(默认值)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>wrap</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>3</td>
+<td>wrap-reverse</td>
+<td>换行，并且反向排列</td>
+</tr>
+</tbody>
+</table>
+<p>1.nowrap</p>
+<div class="parent-container container-nowrap"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-nowrap"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex8&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex9&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex10&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex11&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-nowrap&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: nowrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.wrap</p>
+<div class="parent-container container-wrap"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-wrap"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex8&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex9&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex10&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex11&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-wrap&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.wrap-reverse</p>
+<div class="parent-container container-wrapreverse"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-wrapreverse"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex5&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex6&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex7&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex8&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex9&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex10&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex11&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-wrapreverse&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>该属性是flex-direction属性和flex-wrap属性的结合，即flex-direction属性和flex-wrap属性的简写形式,这里就不再说明.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.container&#123;</div><div class="line">	flex-flow: flex-direction || flex-wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>该属性用来定义，元素在水平方向上的对齐方式.</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>flex-start</td>
+<td>靠左对齐(默认值)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>flex-end</td>
+<td>靠右对齐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>center</td>
+<td>水平居中对齐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>space-between</td>
+<td>两端对齐，子元素之间间隔相等，两端无间隔</td>
+</tr>
+<tr>
+<td>5</td>
+<td>space-around</td>
+<td>平均对齐，子元素两侧间隔相等，且不重叠</td>
+</tr>
+</tbody>
+</table>
+<p>1.flex-start</p>
+<div class="parent-container container-justify-flexstart"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-justify-flexstart"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-justify-flexstart&#123;</div><div class="line">	display: flex;</div><div class="line">	justify-content: flex-start;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.flex-end</p>
+<div class="parent-container container-justify-flexend"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-justify-flexend"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-justify-flexend&#123;</div><div class="line">	display: flex;</div><div class="line">	justify-content: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.center</p>
+<div class="parent-container container-justify-center"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-justify-center"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-justify-center&#123;</div><div class="line">	display: flex;</div><div class="line">	justify-content: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.space-between</p>
+<div class="parent-container container-justify-spacebetween"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-justify-spacebetween"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-justify-spacebetween&#123;</div><div class="line">	display: flex;</div><div class="line">	justify-content: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>5.space-around</p>
+<div class="parent-container container-justify-spacearound"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-justify-spacearound"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container-justify-spacearound&#123;</div><div class="line">	display: flex;</div><div class="line">	justify-content: space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>该属性用来定义，元素在垂直方向上的对齐方式.</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>flex-start</td>
+<td>顶部对齐(默认值)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>flex-end</td>
+<td>底部对齐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>center</td>
+<td>垂直居中对齐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>baseline</td>
+<td>子元素第一行文字的基线对齐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>stretch</td>
+<td>占满父元素整个垂直方向的高度,即高度与父元素相同(项目未设置高度或设为auto的情况下生效)(默认值)</td>
+</tr>
+</tbody>
+</table>
+<p>1.flex-start</p>
+<div class="parent-container container-aItems-flexstart"><p style="height: 80px">flex1</p><p style="height: 40px">flex2</p><p style="height: 120px">flex3</p><p style="height: 100px">flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aItems-flexstart"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 80px"</span>&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 40px"</span>&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 120px"</span>&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 100px"</span>&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Items-flexstart&#123;</div><div class="line">	display: flex;</div><div class="line">	align-items: flex-start;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.flex-end</p>
+<div class="parent-container container-aItems-flexend"><p style="height: 80px">flex1</p><p style="height: 40px">flex2</p><p style="height: 120px">flex3</p><p style="height: 100px">flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aItems-flexend"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 80px"</span>&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 40px"</span>&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 120px"</span>&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 100px"</span>&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Items-flexend&#123;</div><div class="line">	display: flex;</div><div class="line">	align-items: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.center</p>
+<div class="parent-container container-aItems-center"><p style="height: 80px">flex1</p><p style="height: 40px">flex2</p><p style="height: 120px">flex3</p><p style="height: 100px">flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aItems-center"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 80px"</span>&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 40px"</span>&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 120px"</span>&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 100px"</span>&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Items-center&#123;</div><div class="line">	display: flex;</div><div class="line">	align-items: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.baseline</p>
+<div class="parent-container container-aItems-baseline"><p style="height: 80px;font-size: 20px">flex1</p><p style="height: 40px;font-size: 14px">flex2</p><p style="height: 120px;font-size: 22px">flex3</p><p style="height: 100px;font-size: 25px">flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aItems-baseline"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 80px;font-size: 20px"</span>&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 40px;font-size: 14px"</span>&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 120px;font-size: 22px"</span>&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 100px;font-size: 25px"</span>&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Items-baseline&#123;</div><div class="line">	display: flex;</div><div class="line">	align-items: baseline;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>5.stretch</p>
+<div class="parent-container container-aItems-stretch"><p style="height: initial;">flex1</p><p style="height: initial;">flex2</p><p style="height: 50px;">flex3</p><p style="height: 150px;">flex4</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aItems-stretch"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"height: initial;"</span>&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: initial;"</span>&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 50px;"</span>&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"height: 150px;"</span>&gt;flex4&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Items-stretch&#123;</div><div class="line">	display: flex;</div><div class="line">	align-items: stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>该属性用来定义，多排子元素在垂直方向上每一排之间的对齐方式.</p>
+<p><strong> 该属性必须在具有多排子元素的父元素中才能生效，即必须有 flex-wrap: wrap; 或 flex-wrap: wrap-reverse;且父元素中有多个子元素，一排放不下的情况下才有效果. </strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>flex-start</td>
+<td>垂直方向上，排之间靠近顶部对齐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>flex-end</td>
+<td>垂直方向上，排之间靠近底部对齐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>center</td>
+<td>垂直方向上，排之间居中对齐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>space-between</td>
+<td>垂直方向上，第一排与最后一排上下两端紧靠父元素，排之间的间隔平分</td>
+</tr>
+<tr>
+<td>5</td>
+<td>space-around</td>
+<td>垂直方向上平均对齐，排之间两侧间隔相等，且不重叠</td>
+</tr>
+<tr>
+<td>6</td>
+<td>stretch</td>
+<td>所有排占满父元素整个垂直方向的高度(默认值)</td>
+</tr>
+</tbody>
+</table>
+<p>1.flex-start</p>
+<div class="parent-container container-aContent-flexstart"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p><p>flex12</p><p>flex13</p><p>flex14</p><p>flex15</p><p>flex16</p><p>flex17</p><p>flex18</p><p>flex19</p><p>flex20</p><p>flex21</p><p>flex22</p><p>flex23</p><p>flex24</p><p>flex25</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aContent-flexstart"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	···			//多个p元素</div><div class="line">	&lt;p&gt;flex23&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex24&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex25&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Content-flexstart&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: flex-start;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.flex-end</p>
+<div class="parent-container container-aContent-flexend"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p><p>flex12</p><p>flex13</p><p>flex14</p><p>flex15</p><p>flex16</p><p>flex17</p><p>flex18</p><p>flex19</p><p>flex20</p><p>flex21</p><p>flex22</p><p>flex23</p><p>flex24</p><p>flex25</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aContent-flexend"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	···			//多个p元素</div><div class="line">	&lt;p&gt;flex23&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex24&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex25&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Content-flexend&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: flex-end;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>3.center</p>
+<div class="parent-container container-aContent-center"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p><p>flex12</p><p>flex13</p><p>flex14</p><p>flex15</p><p>flex16</p><p>flex17</p><p>flex18</p><p>flex19</p><p>flex20</p><p>flex21</p><p>flex22</p><p>flex23</p><p>flex24</p><p>flex25</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aContent-center"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	···			//多个p元素</div><div class="line">	&lt;p&gt;flex23&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex24&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex25&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Content-center&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>4.space-between</p>
+<div class="parent-container container-aContent-spacebetween"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p><p>flex12</p><p>flex13</p><p>flex14</p><p>flex15</p><p>flex16</p><p>flex17</p><p>flex18</p><p>flex19</p><p>flex20</p><p>flex21</p><p>flex22</p><p>flex23</p><p>flex24</p><p>flex25</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aContent-spacebetween"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	···			//多个p元素</div><div class="line">	&lt;p&gt;flex23&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex24&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex25&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Content-spacebetween&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: space-between;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>5.space-around</p>
+<div class="parent-container container-aContent-spacearound"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p><p>flex12</p><p>flex13</p><p>flex14</p><p>flex15</p><p>flex16</p><p>flex17</p><p>flex18</p><p>flex19</p><p>flex20</p><p>flex21</p><p>flex22</p><p>flex23</p><p>flex24</p><p>flex25</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aContent-spacearound"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	···			//多个p元素</div><div class="line">	&lt;p&gt;flex23&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex24&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex25&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Content-spacearound&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: space-around;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>6.stretch</p>
+<div class="parent-container container-aContent-stretch"><p>flex1</p><p>flex2</p><p>flex3</p><p>flex4</p><p>flex5</p><p>flex6</p><p>flex7</p><p>flex8</p><p>flex9</p><p>flex10</p><p>flex11</p><p>flex12</p><p>flex13</p><p>flex14</p><p>flex15</p><p>flex16</p><p>flex17</p><p>flex18</p><p>flex19</p><p>flex20</p><p>flex21</p><p>flex22</p><p>flex23</p><p>flex24</p><p>flex25</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"parent-container container-aContent-stretch"</span>&gt;</div><div class="line">	&lt;p&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex3&lt;/p&gt;</div><div class="line">	···			//多个p元素</div><div class="line">	&lt;p&gt;flex23&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex24&lt;/p&gt;</div><div class="line">	&lt;p&gt;flex25&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.container<span class="_">-a</span>Content-stretch&#123;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="flex容器中子元素的属性"><a href="#flex容器中子元素的属性" class="headerlink" title="flex容器中子元素的属性"></a>flex容器中子元素的属性</h3><p><strong> 为了减少重复代码，且方便读者看懂，该标题(flex容器中子元素的属性)下的所有代码的css均基于以下两个class属性 </strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.child-container&#123;</div><div class="line">	border: 1px solid <span class="comment">#D53419;</span></div><div class="line">	background-color: <span class="comment">#50E9EE;</span></div><div class="line">	width: 350px;</div><div class="line">	height: 100px;</div><div class="line">	display: flex;</div><div class="line">&#125;</div><div class="line">.child-container&gt;p&#123;</div><div class="line">	background-color: <span class="comment">#dbc21d;</span></div><div class="line">	height: 50px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>flex子元素具有6个相关的属性，可以将属性设置在子元素上。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>order</td>
+<td>定义子元素的排列顺序。数值越小，排列越靠前，默认为0。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>flex-grow</td>
+<td>定义子元素的放大比例，如果存在剩余空间，也会等比例放大，默认为0。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>flex-shrink</td>
+<td>定义子元素的缩小比例，如果空间不足，该子元素将缩小，默认为1。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>flex-basis</td>
+<td>定义在分配多余空间之前，子元素占据的水平或垂直空间，默认为auto。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>flex</td>
+<td>是flex-grow, flex-shrink 和 flex-basis的简写，后两个属性可选，默认值为0 1 auto。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>align-self</td>
+<td>允许单个子元素有与其他子元素不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于默认值stretch。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>定义项目的排列顺序。数值越小，排列越靠前。</p>
+<div class="child-container childorder"><p style="order: 36">flex1</p><p style="order: 18">flex2</p><p style="order: 5">flex3</p><p style="order: 9">flex4</p><p style="order: 6">flex5</p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"child-container childorder"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"order: 36"</span>&gt;flex1&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"order: 18"</span>&gt;flex2&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"order: 5"</span>&gt;flex3&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"order: 9"</span>&gt;flex4&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"order: 6"</span>&gt;flex5&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.childorder&gt;p&#123;</div><div class="line">	width:50px;</div><div class="line">	margin: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4><p>如果所有子元素的flex-grow属性都为1，则它们将等分一排空间.<br>如果一个子元素的flex-grow属性为2，其他子元素都为1，则前者占据的宽度是其他子元素的2倍。<br><strong> 如果想要flex-grow样式正常执行，则不能给子元素定义宽度width！否则样式会与预想中的不同 </strong></p>
+<div class="child-container"><p style="background-color:#ff7f50;flex-grow: 1;"></p><p style="background-color:#2bafd9;flex-grow: 2;"></p><p style="background-color:#f0e68c;flex-grow: 1;"></p><p style="background-color:#ffc0cb;flex-grow: 3;"></p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"child-container"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"background-color:#ff7f50;flex-grow: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"background-color:#2bafd9;flex-grow: 2;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"background-color:#f0e68c;flex-grow: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"background-color:#ffc0cb;flex-grow: 3;"</span>&gt;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h4><p>如果所有子元素的flex-shrink属性都为1，当空间不足时，所有子元素都将等比例缩小。如果一个子元素的flex-shrink属性为0，其他子元素都为1，则空间不足时，前者不缩小。</p>
+<div class="child-container child-flexshrink"><p style="flex-shrink: 1;"></p><p style="flex-shrink: 0;"></p><p style="flex-shrink: 1;"></p><p style="flex-shrink: 1;"></p><p style="flex-shrink: 1;"></p><p style="flex-shrink: 1;"></p><p style="flex-shrink: 1;"></p><p style="flex-shrink: 1;"></p><p style="flex-shrink: 1;"></p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"child-container child-flexshrink"</span>&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 0;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-shrink: 1;"</span>&gt;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.child-flexshrink&gt;p&#123;</div><div class="line">	height: 50px;</div><div class="line">	width: 50px;</div><div class="line">	margin: 5px;</div><div class="line">	background-color:<span class="comment">#be5ad1;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><p>定义在一排空间未被占满之前，子元素的width或height的值(例如100px)，定义之后，子元素将占据固定空间。</p>
+<div class="child-container child-flexshrink"><p></p><p style="flex-basis: 100px;"></p><p></p><p></p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"child-container child-flexshrink"</span>&gt;</div><div class="line">	&lt;p&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"flex-basis: 100px;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p&gt;&lt;/p&gt;</div><div class="line">	&lt;p&gt;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.child-flexshrink&gt;p&#123;</div><div class="line">	height: 50px;</div><div class="line">	width: 50px;</div><div class="line">	margin: 5px;</div><div class="line">	background-color:<span class="comment">#be5ad1;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  flex: none | [ &lt;<span class="string">'flex-grow'</span>&gt; &lt;<span class="string">'flex-shrink'</span>&gt;? || &lt;<span class="string">'flex-basis'</span>&gt; ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>该属性有6个属性值</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>flex-start</td>
+</tr>
+<tr>
+<td>2</td>
+<td>flex-end</td>
+</tr>
+<tr>
+<td>3</td>
+<td>center</td>
+</tr>
+<tr>
+<td>4</td>
+<td>baseline</td>
+</tr>
+<tr>
+<td>5</td>
+<td>stretch</td>
+</tr>
+<tr>
+<td>6</td>
+<td>auto</td>
+</tr>
+</tbody>
+</table>
+<p>属性值含义可查看 <a href="#align-items">align-items</a> 与align-items属性值的含义相同(auto除外);</p>
+<p>align-self默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch属性值。</p>
+<div class="child-container child-alignself"><p></p><p style="align-self: flex-end;"></p><p></p><p></p></div>
+
+<p>代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"child-container child-alignself"</span>&gt;</div><div class="line">	&lt;p&gt;&lt;/p&gt;</div><div class="line">	&lt;p style=<span class="string">"align-self: flex-end;"</span>&gt;&lt;/p&gt;</div><div class="line">	&lt;p&gt;&lt;/p&gt;</div><div class="line">	&lt;p&gt;&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.child-alignself&gt;p&#123;</div><div class="line">	height: 50px;</div><div class="line">	width: 50px;</div><div class="line">	margin: 5px;</div><div class="line">	background-color:<span class="comment">#be5ad1;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>flex弹性布局的诞生，解决了传统CSS布局的很多问题，而且使用起来更加方便。</p>
+<p>我们回到之前最开始的那个问题，如果列表是动态的话，使用flex是不是很方便？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// html代码</div><div class="line">&lt;div class=<span class="string">"newlist"</span>&gt;</div><div class="line">	&lt;ul class=<span class="string">"new-ul"</span>&gt;</div><div class="line">		&lt;li&gt;列表1&lt;/li&gt;</div><div class="line">		&lt;li&gt;列表2&lt;/li&gt;</div><div class="line">		&lt;li&gt;列表3&lt;/li&gt;</div><div class="line">	&lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">// css代码</div><div class="line">.newlist&#123;</div><div class="line">	border: 1px solid <span class="comment">#D53419;</span></div><div class="line">	background-color: <span class="comment">#50E9EE;</span></div><div class="line">	width: 250px;</div><div class="line">	height: 250px;</div><div class="line">&#125;</div><div class="line">.new-ul&#123;</div><div class="line">	margin-top: 0px;</div><div class="line">	height: 250px;</div><div class="line">	display: flex;</div><div class="line">	flex-wrap: wrap;</div><div class="line">	align-content: space-around;</div><div class="line">&#125;</div><div class="line">.new-ul&gt;li&#123;</div><div class="line">	width: 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>三个列表的情况</p>
+<div class="newlist"><ul class="new-ul"><li>列表1</li><li>列表2</li><li>列表3</li></ul></div>
+
+<p>四个列表情况</p>
+<div class="newlist"><ul class="new-ul"><li>列表1</li><li>列表2</li><li>列表3</li><li>列表4</li></ul></div>
+
+<p>五个列表情况</p>
+<div class="newlist"><ul class="new-ul"><li>列表1</li><li>列表2</li><li>列表3</li><li>列表4</li><li>列表5</li></ul></div>
+
+<p>无需一直修改css文件，非常方便！</p>
+<p>本章完~</p>
+<script type="text/javascript" src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/js/my/flexincss.js"></script>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CSS3/">CSS3</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2017/03/24/css弹性布局-flex布局/" data-title="css弹性布局-flex布局 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/06/数据结构的相互转换/" title="数据结构的相互转换">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  数据结构的相互转换</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/03/07/js闭包/"  title="js闭包">
+ <strong>NEXT:</strong><br/> 
+ <span>js闭包
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统的css布局"><span class="toc-number">1.</span> <span class="toc-text">传统的css布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex布局"><span class="toc-number">2.</span> <span class="toc-text">flex布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初识flex"><span class="toc-number">2.1.</span> <span class="toc-text">初识flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex基本概念"><span class="toc-number">2.2.</span> <span class="toc-text">flex基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex容器属性"><span class="toc-number">2.3.</span> <span class="toc-text">flex容器属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-direction"><span class="toc-number">2.3.1.</span> <span class="toc-text">flex-direction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-wrap"><span class="toc-number">2.3.2.</span> <span class="toc-text">flex-wrap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-flow"><span class="toc-number">2.3.3.</span> <span class="toc-text">flex-flow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#justify-content"><span class="toc-number">2.3.4.</span> <span class="toc-text">justify-content</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-items"><span class="toc-number">2.3.5.</span> <span class="toc-text">align-items</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-content"><span class="toc-number">2.3.6.</span> <span class="toc-text">align-content</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex容器中子元素的属性"><span class="toc-number">2.4.</span> <span class="toc-text">flex容器中子元素的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#order"><span class="toc-number">2.4.1.</span> <span class="toc-text">order</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-grow"><span class="toc-number">2.4.2.</span> <span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-shrink"><span class="toc-number">2.4.3.</span> <span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex-basis"><span class="toc-number">2.4.4.</span> <span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flex"><span class="toc-number">2.4.5.</span> <span class="toc-text">flex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#align-self"><span class="toc-number">2.4.6.</span> <span class="toc-text">align-self</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>5</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

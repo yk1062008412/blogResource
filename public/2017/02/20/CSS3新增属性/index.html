@@ -1,0 +1,484 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS3新增属性(过渡、背景裁剪、动画、CSS变换) | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="本文简述CSS3的过渡效果transition、动画animation、背景相关操作background等。
+CSS3过渡效果transition效果图    请把鼠标放在该区域
+
+代码实现html代码：
+1&amp;lt;div class=&quot;trans_div&quot;&amp;gt;请把鼠标放在该区域&amp;lt;/div">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/02/20/CSS3新增属性/" title="CSS3新增属性(过渡、背景裁剪、动画、CSS变换)" itemprop="url">CSS3新增属性(过渡、背景裁剪、动画、CSS变换)</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-02-20T03:43:05.000Z" itemprop="datePublished">2017-02-20</time>
+    Updated:<time datetime="2017-02-20T12:18:18.026Z" itemprop="dateModified">2017-02-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3过渡效果transition"><span class="toc-number">1.</span> <span class="toc-text">CSS3过渡效果transition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图"><span class="toc-number">1.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-number">1.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备注"><span class="toc-number">1.4.</span> <span class="toc-text">备注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS变换transform"><span class="toc-number">2.</span> <span class="toc-text">CSS变换transform</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图-1"><span class="toc-number">2.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-1"><span class="toc-number">2.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备注-1"><span class="toc-number">2.4.</span> <span class="toc-text">备注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#盒阴影box-shadow"><span class="toc-number">3.</span> <span class="toc-text">盒阴影box-shadow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图-2"><span class="toc-number">3.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-2"><span class="toc-number">3.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-2"><span class="toc-number">3.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">3.4.</span> <span class="toc-text">语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3动画"><span class="toc-number">4.</span> <span class="toc-text">CSS3动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图-3"><span class="toc-number">4.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-3"><span class="toc-number">4.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-3"><span class="toc-number">4.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备注-2"><span class="toc-number">4.4.</span> <span class="toc-text">备注</span></a></li></ol></li></ol>
+		</div>
+		
+		<p>本文简述CSS3的过渡效果<a href="http://www.runoob.com/css3/css3-transitions.html" target="_blank" rel="external">transition</a>、动画<a href="http://www.runoob.com/css3/css3-animations.html" target="_blank" rel="external">animation</a>、背景相关操作<a href="http://www.runoob.com/css3/css3-backgrounds.html" target="_blank" rel="external">background</a>等。</p>
+<h2 id="CSS3过渡效果transition"><a href="#CSS3过渡效果transition" class="headerlink" title="CSS3过渡效果transition"></a>CSS3过渡效果transition</h2><h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><div class="trans_div"><br>    请把鼠标放在该区域<br></div>
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>html代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"trans_div"</span>&gt;请把鼠标放在该区域&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>css样式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.trans_div&#123;</div><div class="line">	width: 100px;</div><div class="line">	height: 100px;</div><div class="line">	background: <span class="comment">#ff0000;</span></div><div class="line">	color: <span class="comment">#ffffff;</span></div><div class="line">	transition: width 2s , background 2s;</div><div class="line">	-webkit-transition: width 2s , background 2s;</div><div class="line">	-ms-transition: width 2s , background 2s;</div><div class="line">	-moz-transition: width 2s , background 2s;</div><div class="line">&#125;</div><div class="line">.trans_div:hover&#123;</div><div class="line">	width: 300px;</div><div class="line">	background: <span class="comment">#0000ff;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>trans_div这个class定义了div的过渡属性，width过渡时间为2s，background过渡时间为2s。之后在鼠标放上去hover的状态下，触发transition。</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>transition包含4个过渡属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">transition-property</td>
+<td style="text-align:left">定义应用过渡的 CSS 属性的名称。</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-duration</td>
+<td style="text-align:left">定义实现过渡效果需要花费的时间。默认是 0。</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-timing-function</td>
+<td style="text-align:left">规定过渡效果的时间曲线。默认是 “ease”。</td>
+</tr>
+<tr>
+<td style="text-align:left">transition-delay</td>
+<td style="text-align:left">规定过渡效果何时开始。默认是 0。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="CSS变换transform"><a href="#CSS变换transform" class="headerlink" title="CSS变换transform"></a>CSS变换transform</h2><h3 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h3><div class="transform_div"><br>    div旋转<br></div>
+
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><p>html代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"transform_div"</span>&gt;div旋转&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>css代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.transform_div&#123;</div><div class="line">	width: 100px;</div><div class="line">	height: 100px;</div><div class="line">	background: <span class="comment">#00ff00;</span></div><div class="line">	transform: rotate3d(1,2,3,30deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><p>transform使元素实现了2D、3D的翻转、拉伸、缩放、移动、倾斜等效果。</p>
+<h3 id="备注-1"><a href="#备注-1" class="headerlink" title="备注"></a>备注</h3><p>transition包含2D和3D两种效果，属性太多了，懒得写了，请点击下面链接自行看。。。实在不好意思。。。<br>链接为css3菜鸟教程内容:<a href="http://www.runoob.com/css3/css3-2dtransforms.html" target="_blank" rel="external">2d效果</a><br>链接为css3菜鸟教程内容:<a href="http://www.runoob.com/css3/css3-3dtransforms.html" target="_blank" rel="external">3d效果</a></p>
+<h2 id="盒阴影box-shadow"><a href="#盒阴影box-shadow" class="headerlink" title="盒阴影box-shadow"></a>盒阴影box-shadow</h2><h3 id="效果图-2"><a href="#效果图-2" class="headerlink" title="效果图"></a>效果图</h3><div class="shadow_div"><br>    阴影<br></div>
+
+<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><p>html代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"shadow_div"</span>&gt;阴影&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>css代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.shadow_div&#123;</div><div class="line">	width: 100px;</div><div class="line">	height: 100px;</div><div class="line">	border: 2px solid <span class="comment">#fff;</span></div><div class="line">	border-radius: 5px;</div><div class="line">	box-shadow: 10px 10px 5px <span class="comment">#888888;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="说明-2"><a href="#说明-2" class="headerlink" title="说明"></a>说明</h3><p>box-shadow可以为img，div等添加阴影效果，使其出现层次感。border-radius实现边框圆角效果。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box-shadow: h-shadow v-shadow blur spread color inset;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">h-shadow</td>
+<td style="text-align:left">必写。水平阴影的位置。允许负值</td>
+</tr>
+<tr>
+<td style="text-align:left">v-shadow</td>
+<td style="text-align:left">必写。垂直阴影的位置。允许负值</td>
+</tr>
+<tr>
+<td style="text-align:left">blur</td>
+<td style="text-align:left">可选。模糊距离</td>
+</tr>
+<tr>
+<td style="text-align:left">spread</td>
+<td style="text-align:left">可选。阴影的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">color</td>
+<td style="text-align:left">可选。阴影的颜色。在CSS颜色值寻找颜色值的完整列表</td>
+</tr>
+<tr>
+<td style="text-align:left">inset</td>
+<td style="text-align:left">可选。从外层的阴影（开始时）改变阴影内侧阴影</td>
+</tr>
+</tbody>
+</table>
+<h2 id="CSS3动画"><a href="#CSS3动画" class="headerlink" title="CSS3动画"></a>CSS3动画</h2><h3 id="效果图-3"><a href="#效果图-3" class="headerlink" title="效果图"></a>效果图</h3><div class="animation_div">CSS3动画</div>
+
+<h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h3><p>html代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=<span class="string">"animation_div"</span>&gt;CSS3动画&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>css代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">.animation_div&#123;</div><div class="line">	position: relative;</div><div class="line">	width: 100px;</div><div class="line">	height: 100px;</div><div class="line">	background: <span class="comment">#ffff00;</span></div><div class="line">	animation: myanimate 4s infinite;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes myanimate&#123;</div><div class="line">	0% &#123;</div><div class="line">		background: <span class="comment">#ffff00;</span></div><div class="line">		left: 0px;</div><div class="line">		transform: rotate(0deg);</div><div class="line">	&#125;</div><div class="line">	25% &#123;</div><div class="line">		background: <span class="comment">#00ff00;</span></div><div class="line">		left: 150px;</div><div class="line">		transform: rotate(90deg);</div><div class="line">	&#125;</div><div class="line">	50% &#123;</div><div class="line">		background: <span class="comment">#00ffff;</span></div><div class="line">		left: 300px;</div><div class="line">		transform: rotate(180deg);</div><div class="line">	&#125;</div><div class="line">	75% &#123;</div><div class="line">		background: <span class="comment">#00ff00;</span></div><div class="line">		left: 150px;</div><div class="line">		transform: rotate(270deg);</div><div class="line">	&#125;</div><div class="line">	100% &#123;</div><div class="line">		background: <span class="comment">#ffff00;</span></div><div class="line">		left: 0px;</div><div class="line">		transform: rotate(360deg);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="说明-3"><a href="#说明-3" class="headerlink" title="说明"></a>说明</h3><p>animate用来创建css动画效果，使用时，先给动画起个名字，然后用 @keyframes 语法来定义该动画的效果展示，动画效果开始为0%状态，结束为100%状态。根据不同时间节点，来定义该动画在不同节点上的展示效果。</p>
+<h3 id="备注-2"><a href="#备注-2" class="headerlink" title="备注"></a>备注</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">@keyframes</td>
+<td style="text-align:left">规定动画在不同时间段的展示效果</td>
+</tr>
+<tr>
+<td style="text-align:left">animation</td>
+<td style="text-align:left">所有动画属性的简写属性，除了 animation-play-state 属性。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-name</td>
+<td style="text-align:left">规定 @keyframes 动画的名称。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-duration</td>
+<td style="text-align:left">规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-timing-function</td>
+<td style="text-align:left">规定动画的速度曲线。默认是 “ease”。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-delay</td>
+<td style="text-align:left">规定动画何时开始。默认是 0。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-iteration-count</td>
+<td style="text-align:left">规定动画被播放的次数。默认是 1。无限循环为 infinite。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-direction</td>
+<td style="text-align:left">规定动画何时开始。默认是 0。</td>
+</tr>
+<tr>
+<td style="text-align:left">animation-play-state</td>
+<td style="text-align:left">规定动画是否正在运行或暂停。默认是 “running”。</td>
+</tr>
+</tbody>
+</table>
+<script type="text/javascript" src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="/js/my/css3_1.js"></script>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CSS3/">CSS3</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2017/02/20/CSS3新增属性/" data-title="CSS3新增属性(过渡、背景裁剪、动画、CSS变换) | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/02/20/hexo导入自定义css文件/" title="hexo引入自定义css文件">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  hexo引入自定义css文件</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/02/19/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3过渡效果transition"><span class="toc-number">1.</span> <span class="toc-text">CSS3过渡效果transition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图"><span class="toc-number">1.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明"><span class="toc-number">1.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备注"><span class="toc-number">1.4.</span> <span class="toc-text">备注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS变换transform"><span class="toc-number">2.</span> <span class="toc-text">CSS变换transform</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图-1"><span class="toc-number">2.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-1"><span class="toc-number">2.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-1"><span class="toc-number">2.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备注-1"><span class="toc-number">2.4.</span> <span class="toc-text">备注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#盒阴影box-shadow"><span class="toc-number">3.</span> <span class="toc-text">盒阴影box-shadow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图-2"><span class="toc-number">3.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-2"><span class="toc-number">3.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-2"><span class="toc-number">3.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">3.4.</span> <span class="toc-text">语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3动画"><span class="toc-number">4.</span> <span class="toc-text">CSS3动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果图-3"><span class="toc-number">4.1.</span> <span class="toc-text">效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-3"><span class="toc-number">4.2.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明-3"><span class="toc-number">4.3.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#备注-2"><span class="toc-number">4.4.</span> <span class="toc-text">备注</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>5</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
