@@ -1,0 +1,408 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>谷歌HTML/CSS规范 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="原文链接：https://google.github.io/styleguide/htmlcssguide.html
+背景这篇文章定义了 HTML 和 CSS 的格式和代码规范，旨在提高代码质量和协作效率。
+通用通用样式规范URL协议省略img图片、css样式、Javascript脚本以及其他媒体文">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/04/24/谷歌HTML-CSS规范/" title="谷歌HTML/CSS规范" itemprop="url">谷歌HTML/CSS规范</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-04-24T01:52:16.000Z" itemprop="datePublished">2017-04-24</time>
+    Updated:<time datetime="2017-04-24T03:54:02.900Z" itemprop="dateModified">2017-04-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用"><span class="toc-number">2.</span> <span class="toc-text">通用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通用样式规范"><span class="toc-number">2.1.</span> <span class="toc-text">通用样式规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#URL协议"><span class="toc-number">2.1.1.</span> <span class="toc-text">URL协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用格式规范"><span class="toc-number">2.2.</span> <span class="toc-text">通用格式规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码缩进"><span class="toc-number">2.2.1.</span> <span class="toc-text">代码缩进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大小写"><span class="toc-number">2.2.2.</span> <span class="toc-text">大小写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结尾空格"><span class="toc-number">2.2.3.</span> <span class="toc-text">结尾空格</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用元规范"><span class="toc-number">2.3.</span> <span class="toc-text">通用元规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编码"><span class="toc-number">2.3.1.</span> <span class="toc-text">编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注释"><span class="toc-number">2.3.2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任务项"><span class="toc-number">2.3.3.</span> <span class="toc-text">任务项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">3.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-风格规范"><span class="toc-number">3.1.</span> <span class="toc-text">HTML 风格规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档类型"><span class="toc-number">3.1.1.</span> <span class="toc-text">文档类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML-正确性"><span class="toc-number">3.1.2.</span> <span class="toc-text">HTML 正确性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#语义化"><span class="toc-number">3.1.3.</span> <span class="toc-text">语义化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多媒体元素降级"><span class="toc-number">3.1.4.</span> <span class="toc-text">多媒体元素降级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关注分离"><span class="toc-number">3.1.5.</span> <span class="toc-text">关注分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实体引用"><span class="toc-number">3.1.6.</span> <span class="toc-text">实体引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type-属性"><span class="toc-number">3.1.7.</span> <span class="toc-text">type 属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML格式规范"><span class="toc-number">3.2.</span> <span class="toc-text">HTML格式规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML-引号"><span class="toc-number">3.2.1.</span> <span class="toc-text">HTML 引号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">4.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS样式规则"><span class="toc-number">4.1.</span> <span class="toc-text">CSS样式规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ID-和-Class-命名"><span class="toc-number">4.1.1.</span> <span class="toc-text">ID 和 Class 命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ID-和-Class-命名风格"><span class="toc-number">4.1.2.</span> <span class="toc-text">ID 和 Class 命名风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器"><span class="toc-number">4.1.3.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性简写"><span class="toc-number">4.1.4.</span> <span class="toc-text">属性简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-和单位"><span class="toc-number">4.1.5.</span> <span class="toc-text">0 和单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开头的-0"><span class="toc-number">4.1.6.</span> <span class="toc-text">开头的 0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16进制表示法"><span class="toc-number">4.1.7.</span> <span class="toc-text">16进制表示法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前缀"><span class="toc-number">4.1.8.</span> <span class="toc-text">前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ID-和-Class-命名分隔符"><span class="toc-number">4.1.9.</span> <span class="toc-text">ID 和 Class 命名分隔符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS格式规则"><span class="toc-number">4.2.</span> <span class="toc-text">CSS格式规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#书写顺序"><span class="toc-number">4.2.1.</span> <span class="toc-text">书写顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块级内容缩进"><span class="toc-number">4.2.2.</span> <span class="toc-text">块级内容缩进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#声明结束"><span class="toc-number">4.2.3.</span> <span class="toc-text">声明结束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性名结尾"><span class="toc-number">4.2.4.</span> <span class="toc-text">属性名结尾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#声明样式块的分隔"><span class="toc-number">4.2.5.</span> <span class="toc-text">声明样式块的分隔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器分隔"><span class="toc-number">4.2.6.</span> <span class="toc-text">选择器分隔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#规则分隔"><span class="toc-number">4.2.7.</span> <span class="toc-text">规则分隔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-引号"><span class="toc-number">4.2.8.</span> <span class="toc-text">CSS 引号</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS元规则"><span class="toc-number">4.3.</span> <span class="toc-text">CSS元规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分段注释"><span class="toc-number">4.3.1.</span> <span class="toc-text">分段注释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-number">5.</span> <span class="toc-text">结语</span></a></li></ol>
+		</div>
+		
+		<p>原文链接：<a href="https://google.github.io/styleguide/htmlcssguide.html" target="_blank" rel="external">https://google.github.io/styleguide/htmlcssguide.html</a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>这篇文章定义了 HTML 和 CSS 的格式和代码规范，旨在提高代码质量和协作效率。</p>
+<h2 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h2><h3 id="通用样式规范"><a href="#通用样式规范" class="headerlink" title="通用样式规范"></a>通用样式规范</h3><h4 id="URL协议"><a href="#URL协议" class="headerlink" title="URL协议"></a>URL协议</h4><p>省略img图片、css样式、Javascript脚本以及其他媒体文件 URL 的协议部分(http:,https:),除非文件在两种协议下都不可用。这种方案称为 protocol-relative URL，好处是无论你是使用HTTPS 还是 HTTP 访问页面，浏览器都会以相同的协议请求页面中的资源，同时可以节省一部分字节。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;script src=<span class="string">"https://www.google.com/js/gweb/analytics/autotrack.js"</span>&gt;&lt;/script&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;script src=<span class="string">"//www.google.com/js/gweb/analytics/autotrack.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">.example &#123;</div><div class="line">  background: url(https://www.google.com/images/example);</div><div class="line">&#125;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">.example &#123;</div><div class="line">  background: url(//www.google.com/images/example);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="通用格式规范"><a href="#通用格式规范" class="headerlink" title="通用格式规范"></a>通用格式规范</h3><h4 id="代码缩进"><a href="#代码缩进" class="headerlink" title="代码缩进"></a>代码缩进</h4><p>一次缩进2个空格</p>
+<p>不要使用制表符(tab键)或混合tab键和空格进行缩进。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;&lt;/li&gt;</div><div class="line">  &lt;li&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.example&#123;</div><div class="line">  color:blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="大小写"><a href="#大小写" class="headerlink" title="大小写"></a>大小写</h4><p>以下元素都应尽量使用小写：<br>HTML元素名称、属性、属性值(除非text/CDATA)，CSS选择器，属性和属性值(字符串除外)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;A HREF=<span class="string">"/"</span>&gt;Home&lt;/A&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;img src=<span class="string">"google.png"</span> alt=<span class="string">"Google"</span>&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">color: <span class="comment">#E5E5E5;</span></div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">color: <span class="comment">#e5e5e5;</span></div></pre></td></tr></table></figure>
+<h4 id="结尾空格"><a href="#结尾空格" class="headerlink" title="结尾空格"></a>结尾空格</h4><p>结尾的空格是比较多余的，可能使代码更加复杂化。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;p&gt;What?_&lt;/p&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;p&gt;Yes please.&lt;/p&gt;</div></pre></td></tr></table></figure>
+<h3 id="通用元规范"><a href="#通用元规范" class="headerlink" title="通用元规范"></a>通用元规范</h3><h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>在 HTML 中需要指定编码方式，CSS 中不需要指定，因为默认是 UTF-8。</p>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>使用注释来解释代码：包含的模块，功能以及优点。便于后期维护。</p>
+<h4 id="任务项"><a href="#任务项" class="headerlink" title="任务项"></a>任务项</h4><p>用 TODO 来标记待办事项，而不是用一些其他的标记，像 @@。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">  </div><div class="line">&lt;!-- TODO: remove optional tags --&gt;</div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;Apples&lt;/li&gt;</div><div class="line">  &lt;li&gt;Oranges&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">  </div><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">  </div><div class="line">&lt;!-- @ remove optional tags @ --&gt;</div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;Apples&lt;/li&gt;</div><div class="line">  &lt;li&gt;Oranges&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="HTML-风格规范"><a href="#HTML-风格规范" class="headerlink" title="HTML 风格规范"></a>HTML 风格规范</h3><h4 id="文档类型"><a href="#文档类型" class="headerlink" title="文档类型"></a>文档类型</h4><p>HTML 文档应使用 HTML5 的文档类型：&lt;!DOCTYPE html&gt;。<br>单标记标签无需封闭自身，<br> 不要写成 <br>。</p>
+<h4 id="HTML-正确性"><a href="#HTML-正确性" class="headerlink" title="HTML 正确性"></a>HTML 正确性</h4><p>尽可能使用正确的 HTML。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;title&gt;Test&lt;/title&gt;</div><div class="line">&lt;article&gt;This is only a test.</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">&lt;title&gt;Test&lt;/title&gt;</div><div class="line">&lt;article&gt;This is only a test.&lt;/article&gt;</div></pre></td></tr></table></figure>
+<h4 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h4><p>根据使用场景选择正确的 HTML 元素（有时被错误的称为“标签”）。例如，使用  h1 元素创建标题，p 元素创建段落，a 元素创建链接等等。正确的使用 HTML 元素对于可访问性、可重用性、搜索引擎以及编码效率都很重要。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;div onclick=<span class="string">"goToRecommendations();"</span>&gt;All recommendations&lt;/div&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;a href=<span class="string">"recommendations/"</span>&gt;All recommendations&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="多媒体元素降级"><a href="#多媒体元素降级" class="headerlink" title="多媒体元素降级"></a>多媒体元素降级</h4><p>对于像图片、视频、canvas 动画等多媒体元素，确保提供其他可访问的内容。图片可以使用替代文本（alt），视频和音频可以使用文字版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;img src=<span class="string">"spreadsheet.png"</span>&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;img src=<span class="string">"spreadsheet.png"</span> alt=<span class="string">"Spreadsheet screenshot."</span>&gt;</div></pre></td></tr></table></figure>
+<h4 id="关注分离"><a href="#关注分离" class="headerlink" title="关注分离"></a>关注分离</h4><p>标记、样式和脚本分离，确保相互耦合最小化。</p>
+<h4 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h4><p>如果团队中文件和编辑器使用同样的编码方式，就没必要使用实体引用，如 <code>&amp; mdash;</code>，<code>&amp; rdquo;</code>，<code>&amp; #x263a;</code>，除了一些在 HTML 中有特殊含义的字符（如 &lt; 和 &amp;）以及不可见的字符（如空格）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">The currency symbol <span class="keyword">for</span> the Euro is &amp;ldquo;&amp;eur;&amp;rdquo;.</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">The currency symbol <span class="keyword">for</span> the Euro is “€”.</div></pre></td></tr></table></figure>
+<h4 id="type-属性"><a href="#type-属性" class="headerlink" title="type 属性"></a>type 属性</h4><p>在引用样式表和脚本时，不要指定 type 属性，除非不是 CSS 或 JavaScript。<br>因为 HTML5 中已经默认指定样式变的 type 是 text/css，脚本的type 是 text/javascript。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"//www.google.com/css/maia.css"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"//www.google.com/css/maia.css"</span>&gt;</div><div class="line">  </div><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;script src=<span class="string">"//www.google.com/js/gweb/analytics/autotrack.js"</span> <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;&lt;/script&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;script src=<span class="string">"//www.google.com/js/gweb/analytics/autotrack.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="HTML格式规范"><a href="#HTML格式规范" class="headerlink" title="HTML格式规范"></a>HTML格式规范</h3><h4 id="HTML-引号"><a href="#HTML-引号" class="headerlink" title="HTML 引号"></a>HTML 引号</h4><p>属性值应该使用双引号。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 不推荐使用 --&gt;</div><div class="line">&lt;a class=<span class="string">'maia-button maia-button-secondary'</span>&gt;Sign <span class="keyword">in</span>&lt;/a&gt;</div><div class="line">  </div><div class="line">&lt;!-- 推荐使用 --&gt;</div><div class="line">&lt;a class=<span class="string">"maia-button maia-button-secondary"</span>&gt;Sign <span class="keyword">in</span>&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="CSS样式规则"><a href="#CSS样式规则" class="headerlink" title="CSS样式规则"></a>CSS样式规则</h3><h4 id="ID-和-Class-命名"><a href="#ID-和-Class-命名" class="headerlink" title="ID 和 Class 命名"></a>ID 和 Class 命名</h4><p>使用有含义的 id 和 class 名称。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用: meaningless */</div><div class="line"><span class="comment">#yee-1901 &#123;&#125;</span></div><div class="line">  </div><div class="line">/* 不推荐使用: presentational */</div><div class="line">.button-green &#123;&#125;</div><div class="line">.clear &#123;&#125;</div><div class="line">  </div><div class="line">/* 推荐使用: specific */</div><div class="line"><span class="comment">#gallery &#123;&#125;</span></div><div class="line"><span class="comment">#login &#123;&#125;</span></div><div class="line">.video &#123;&#125;</div><div class="line">  </div><div class="line">/* 推荐使用: generic */</div><div class="line">.aux &#123;&#125;</div><div class="line">.alt &#123;&#125;</div></pre></td></tr></table></figure>
+<h4 id="ID-和-Class-命名风格"><a href="#ID-和-Class-命名风格" class="headerlink" title="ID 和 Class 命名风格"></a>ID 和 Class 命名风格</h4><p>id 和 class 应该尽量简短，同时要容易理解。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line"><span class="comment">#navigation &#123;&#125;</span></div><div class="line">.atr &#123;&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line"><span class="comment">#nav &#123;&#125;</span></div><div class="line">.author &#123;&#125;</div></pre></td></tr></table></figure>
+<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>除非需要，否则不要在 id 或 class 前加元素名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">ul<span class="comment">#example &#123;&#125;</span></div><div class="line">div.error &#123;&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line"><span class="comment">#example &#123;&#125;</span></div><div class="line">.error &#123;&#125;</div></pre></td></tr></table></figure>
+<h4 id="属性简写"><a href="#属性简写" class="headerlink" title="属性简写"></a>属性简写</h4><p>尽量使用 CSS 中可以简写的属性 (如 font)，可以提高编码效率以及代码可读性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">border-top-style: none;</div><div class="line">font-family: palatino, georgia, serif;</div><div class="line">font-size: 100%;</div><div class="line">line-height: 1.6;</div><div class="line">padding-bottom: 2em;</div><div class="line">padding-left: 1em;</div><div class="line">padding-right: 1em;</div><div class="line">padding-top: 0;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">border-top: 0;</div><div class="line">font: 100%/1.6 palatino, georgia, serif;</div><div class="line">padding: 0 1em 2em;</div></pre></td></tr></table></figure>
+<h4 id="0-和单位"><a href="#0-和单位" class="headerlink" title="0 和单位"></a>0 和单位</h4><p>值为 0 时不用添加单位。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">margin: 0;</div><div class="line">padding: 0;</div></pre></td></tr></table></figure>
+<h4 id="开头的-0"><a href="#开头的-0" class="headerlink" title="开头的 0"></a>开头的 0</h4><p>值在 -1 和 1 之间时，不需要加 0。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">font-size: .8em;</div></pre></td></tr></table></figure>
+<h4 id="16进制表示法"><a href="#16进制表示法" class="headerlink" title="16进制表示法"></a>16进制表示法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">color: <span class="comment">#eebbcc;</span></div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">color: <span class="comment">#ebc;</span></div></pre></td></tr></table></figure>
+<h4 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h4><p>使用带前缀的命名空间可以防止命名冲突，同时提高代码可维护性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.adw-help &#123;&#125; /* AdWords */</div><div class="line"><span class="comment">#maia-note &#123;&#125; /* Maia */</span></div></pre></td></tr></table></figure>
+<h4 id="ID-和-Class-命名分隔符"><a href="#ID-和-Class-命名分隔符" class="headerlink" title="ID 和 Class 命名分隔符"></a>ID 和 Class 命名分隔符</h4><p>选择器中使用连字符可以提高可读性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用: 因为没有将“demo” 和 “image” 用分隔符分开 */</div><div class="line">.demoimage &#123;&#125;</div><div class="line">  </div><div class="line">/* 不推荐使用: 因为使用了下划线，而不是分隔符 */</div><div class="line">.error_status &#123;&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line"><span class="comment">#video-id &#123;&#125;</span></div><div class="line">.ads-sample &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="CSS格式规则"><a href="#CSS格式规则" class="headerlink" title="CSS格式规则"></a>CSS格式规则</h3><h4 id="书写顺序"><a href="#书写顺序" class="headerlink" title="书写顺序"></a>书写顺序</h4><p>按照属性首字母顺序书写 CSS 易于阅读和维护，排序时可以忽略带有浏览器前缀的属性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">background: fuchsia;</div><div class="line">border: 1px solid;</div><div class="line">-moz-border-radius: 4px;</div><div class="line">-webkit-border-radius: 4px;</div><div class="line">border-radius: 4px;</div><div class="line">color: black;</div><div class="line">text-align: center;</div><div class="line">text-indent: 2em;</div></pre></td></tr></table></figure>
+<h4 id="块级内容缩进"><a href="#块级内容缩进" class="headerlink" title="块级内容缩进"></a>块级内容缩进</h4><p>为了反映层级关系和提高可读性，块级内容都应缩进。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@media screen, projection &#123;</div><div class="line">  </div><div class="line">  html &#123;</div><div class="line">    background: <span class="comment">#fff;</span></div><div class="line">    color: <span class="comment">#444;</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="声明结束"><a href="#声明结束" class="headerlink" title="声明结束"></a>声明结束</h4><p>每行 CSS 都应以分号结尾。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">.test &#123;</div><div class="line">  display: block;</div><div class="line">  height: 100px</div><div class="line">&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">.test &#123;</div><div class="line">  display: block;</div><div class="line">  height: 100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="属性名结尾"><a href="#属性名结尾" class="headerlink" title="属性名结尾"></a>属性名结尾</h4><p>属性名和值之间都应有一个空格。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">h3 &#123;</div><div class="line">  font-weight:bold;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">h3 &#123;</div><div class="line">  font-weight: bold;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="声明样式块的分隔"><a href="#声明样式块的分隔" class="headerlink" title="声明样式块的分隔"></a>声明样式块的分隔</h4><p>在选择器和 {} 之间用空格隔开。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用: 因为缺少空格 */</div><div class="line"><span class="comment">#video&#123;</span></div><div class="line">  margin-top: 1em;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">/* 不推荐使用: 因为有不必要的换行符 */</div><div class="line"><span class="comment">#video</span></div><div class="line">&#123;</div><div class="line">  margin-top: 1em;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line"><span class="comment">#video &#123;</span></div><div class="line">  margin-top: 1em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="选择器分隔"><a href="#选择器分隔" class="headerlink" title="选择器分隔"></a>选择器分隔</h4><p>每个选择器都另起一行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">a:focus, a:active &#123;</div><div class="line">  position: relative; top: 1px;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">h1,</div><div class="line">h2,</div><div class="line">h3 &#123;</div><div class="line">  font-weight: normal;</div><div class="line">  line-height: 1.2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="规则分隔"><a href="#规则分隔" class="headerlink" title="规则分隔"></a>规则分隔</h4><p>规则之间都用空行隔开。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">html &#123;</div><div class="line">  background: <span class="comment">#fff;</span></div><div class="line">&#125;</div><div class="line">  </div><div class="line">body &#123;</div><div class="line">  margin: auto;</div><div class="line">  width: 50%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="CSS-引号"><a href="#CSS-引号" class="headerlink" title="CSS 引号"></a>CSS 引号</h4><p>属性选择器和属性值用单引号，URI 的值不需要引号。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/* 不推荐使用 */</div><div class="line">@import url(<span class="string">"//www.google.com/css/maia.css"</span>);</div><div class="line">  </div><div class="line">html &#123;</div><div class="line">  font-family: <span class="string">"open sans"</span>, arial, sans-serif;</div><div class="line">&#125;</div><div class="line">  </div><div class="line">/* 推荐使用 */</div><div class="line">@import url(//www.google.com/css/maia.css);</div><div class="line">  </div><div class="line">html &#123;</div><div class="line">  font-family: <span class="string">'open sans'</span>, arial, sans-serif;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="CSS元规则"><a href="#CSS元规则" class="headerlink" title="CSS元规则"></a>CSS元规则</h3><h4 id="分段注释"><a href="#分段注释" class="headerlink" title="分段注释"></a>分段注释</h4><p>用注释把 CSS 分成各个部分。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/* Header */</div><div class="line">  </div><div class="line"><span class="comment">#adw-header &#123;&#125;</span></div><div class="line">  </div><div class="line">/* Footer */</div><div class="line">  </div><div class="line"><span class="comment">#adw-footer &#123;&#125;</span></div><div class="line">  </div><div class="line">/* Gallery */</div><div class="line">  </div><div class="line">.adw-gallery &#123;&#125;</div></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>坚持遵循代码规范。<br>写代码前先看看周围同事的代码，然后决定代码风格。<br>代码规范的意义在于提供一个参照物。这里提供了一份全局的规范，但是你也得参照公司内部的规范，否则阅读你代码的人会很痛苦。</p>
+<p>本章完！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/HTML/">HTML</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2017/04/24/谷歌HTML-CSS规范/" data-title="谷歌HTML/CSS规范 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/04/06/数据结构的相互转换/"  title="数据结构的相互转换">
+ <strong>NEXT:</strong><br/> 
+ <span>数据结构的相互转换
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用"><span class="toc-number">2.</span> <span class="toc-text">通用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通用样式规范"><span class="toc-number">2.1.</span> <span class="toc-text">通用样式规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#URL协议"><span class="toc-number">2.1.1.</span> <span class="toc-text">URL协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用格式规范"><span class="toc-number">2.2.</span> <span class="toc-text">通用格式规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码缩进"><span class="toc-number">2.2.1.</span> <span class="toc-text">代码缩进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大小写"><span class="toc-number">2.2.2.</span> <span class="toc-text">大小写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#结尾空格"><span class="toc-number">2.2.3.</span> <span class="toc-text">结尾空格</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用元规范"><span class="toc-number">2.3.</span> <span class="toc-text">通用元规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#编码"><span class="toc-number">2.3.1.</span> <span class="toc-text">编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注释"><span class="toc-number">2.3.2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任务项"><span class="toc-number">2.3.3.</span> <span class="toc-text">任务项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML"><span class="toc-number">3.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-风格规范"><span class="toc-number">3.1.</span> <span class="toc-text">HTML 风格规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文档类型"><span class="toc-number">3.1.1.</span> <span class="toc-text">文档类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML-正确性"><span class="toc-number">3.1.2.</span> <span class="toc-text">HTML 正确性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#语义化"><span class="toc-number">3.1.3.</span> <span class="toc-text">语义化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多媒体元素降级"><span class="toc-number">3.1.4.</span> <span class="toc-text">多媒体元素降级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关注分离"><span class="toc-number">3.1.5.</span> <span class="toc-text">关注分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实体引用"><span class="toc-number">3.1.6.</span> <span class="toc-text">实体引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type-属性"><span class="toc-number">3.1.7.</span> <span class="toc-text">type 属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML格式规范"><span class="toc-number">3.2.</span> <span class="toc-text">HTML格式规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML-引号"><span class="toc-number">3.2.1.</span> <span class="toc-text">HTML 引号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS"><span class="toc-number">4.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS样式规则"><span class="toc-number">4.1.</span> <span class="toc-text">CSS样式规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ID-和-Class-命名"><span class="toc-number">4.1.1.</span> <span class="toc-text">ID 和 Class 命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ID-和-Class-命名风格"><span class="toc-number">4.1.2.</span> <span class="toc-text">ID 和 Class 命名风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器"><span class="toc-number">4.1.3.</span> <span class="toc-text">选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性简写"><span class="toc-number">4.1.4.</span> <span class="toc-text">属性简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-和单位"><span class="toc-number">4.1.5.</span> <span class="toc-text">0 和单位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开头的-0"><span class="toc-number">4.1.6.</span> <span class="toc-text">开头的 0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#16进制表示法"><span class="toc-number">4.1.7.</span> <span class="toc-text">16进制表示法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前缀"><span class="toc-number">4.1.8.</span> <span class="toc-text">前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ID-和-Class-命名分隔符"><span class="toc-number">4.1.9.</span> <span class="toc-text">ID 和 Class 命名分隔符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS格式规则"><span class="toc-number">4.2.</span> <span class="toc-text">CSS格式规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#书写顺序"><span class="toc-number">4.2.1.</span> <span class="toc-text">书写顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块级内容缩进"><span class="toc-number">4.2.2.</span> <span class="toc-text">块级内容缩进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#声明结束"><span class="toc-number">4.2.3.</span> <span class="toc-text">声明结束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性名结尾"><span class="toc-number">4.2.4.</span> <span class="toc-text">属性名结尾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#声明样式块的分隔"><span class="toc-number">4.2.5.</span> <span class="toc-text">声明样式块的分隔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器分隔"><span class="toc-number">4.2.6.</span> <span class="toc-text">选择器分隔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#规则分隔"><span class="toc-number">4.2.7.</span> <span class="toc-text">规则分隔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-引号"><span class="toc-number">4.2.8.</span> <span class="toc-text">CSS 引号</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS元规则"><span class="toc-number">4.3.</span> <span class="toc-text">CSS元规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分段注释"><span class="toc-number">4.3.1.</span> <span class="toc-text">分段注释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-number">5.</span> <span class="toc-text">结语</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>6</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>0</sup></a></li>
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTML/" title="HTML">HTML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
