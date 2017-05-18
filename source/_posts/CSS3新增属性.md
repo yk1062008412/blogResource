@@ -1,7 +1,7 @@
 ---
 title: CSS3新增属性(过渡、背景裁剪、动画、CSS变换)
 date: 2017-02-20 11:43:05
-categories: "前端开发"
+categories: "CSS"
 tags: 
 	- CSS3
 ---

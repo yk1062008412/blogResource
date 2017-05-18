@@ -1,7 +1,7 @@
 ---
 title: css弹性布局-flex布局
 date: 2017-03-24 10:51:50
-categories: "前端开发"
+categories: "CSS"
 tags: 
 	- CSS3
 ---

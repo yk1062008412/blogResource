@@ -1,7 +1,7 @@
 ---
 title: js容易混淆的几个函数
 date: 2017-02-27 21:35:11
-categories: "前端开发"
+categories: "Javascript"
 tags:
 	- Javascript
 ---

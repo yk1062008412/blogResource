@@ -1,7 +1,7 @@
 ---
 title: CSS3伪类选择器
 date: 2017-02-22 19:58:26
-categories: "前端开发"
+categories: "CSS"
 tags:
 	- CSS3
 ---

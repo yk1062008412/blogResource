@@ -1,7 +1,7 @@
 ---
 title: js闭包
 date: 2017-03-07 17:26:10
-categories: "前端开发"
+categories: "Javascript"
 tags: 
 	- Javascript
 ---
