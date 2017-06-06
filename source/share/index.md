@@ -37,6 +37,8 @@ date: 2017-02-19 20:05:41
 - [zTree](http://www.jyvtc.com/dzb/uiFramework/js/zTree-v3.2/api/API_cn.html) 树结构
 - [Datatables](http://www.datatables.club/) 表格分页，搜索插件
 - [DropzoneJS](http://www.dropzonejs.com/) 拖动上传文件
+- [Nodejs](https://nodejs.org/zh-cn/)
+- [croppie](http://www.croppic.net/) 前端图片裁剪插件
 
 ### 1.3 常用技术
 

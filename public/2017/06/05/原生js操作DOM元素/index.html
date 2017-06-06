@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | yk</title>
+    <title>原生js操作DOM元素 | yk</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="yk">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+    <meta name="description" content="本文主要讲述一些原生的js来操作DOM元素的方法。
+目前市场上的一些js库很多：jQuery、Angular、prototype、lodash、react、vue等方便了我们应用。但有时候如果开发一些自己的js库，还是要用到原生js。
+当前元素节点
+obj.getElementById()  返回带">
     
     
     
@@ -72,15 +75,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/02/19/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2017/06/05/原生js操作DOM元素/" title="原生js操作DOM元素" itemprop="url">原生js操作DOM元素</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://yk1062008412.github.io" title="yk">yk</a>
     </p>
   <p class="article-time">
-    <time datetime="2017-02-19T07:14:19.450Z" itemprop="datePublished">2017-02-19</time>
-    更新日期:<time datetime="2017-02-20T06:48:26.344Z" itemprop="dateModified">2017-02-20</time>
+    <time datetime="2017-06-05T13:39:09.000Z" itemprop="datePublished">2017-06-05</time>
+    更新日期:<time datetime="2017-06-06T04:34:09.159Z" itemprop="dateModified">2017-06-06</time>
     
   </p>
 </header>
@@ -89,28 +92,85 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#当前元素节点"><span class="toc-number">1.</span> <span class="toc-text">当前元素节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素相关节点"><span class="toc-number">2.</span> <span class="toc-text">元素相关节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建节点"><span class="toc-number">3.</span> <span class="toc-text">创建节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器宽高"><span class="toc-number">4.</span> <span class="toc-text">浏览器宽高</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于jQuery一些方法"><span class="toc-number">5.</span> <span class="toc-text">基于jQuery一些方法</span></a></li></ol>
 		</div>
 		
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<p>本文主要讲述一些原生的js来操作DOM元素的方法。</p>
+<p>目前市场上的一些js库很多：jQuery、Angular、prototype、lodash、react、vue等方便了我们应用。但有时候如果开发一些自己的js库，还是要用到原生js。</p>
+<h2 id="当前元素节点"><a href="#当前元素节点" class="headerlink" title="当前元素节点"></a>当前元素节点</h2><ul>
+<li>obj.getElementById()<br>  返回带有指定 ID 的元素。</li>
+<li>obj.getElementsByTagName()<br>  返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。</li>
+<li>obj.etElementsByClassName()<br>  返回包含带有指定类名的所有元素的节点列表。</li>
+<li>obj.getElementsByName()<br>  方法可返回带有指定名称的对象的集合。</li>
+</ul>
+<h2 id="元素相关节点"><a href="#元素相关节点" class="headerlink" title="元素相关节点"></a>元素相关节点</h2><ul>
+<li>node.childNodes<br>  只读 childNodes 属性返回节点的子节点集合，以 NodeList 对象。注意他包括文本节点和元素节点(即像换行，空白这些也算 .nodeName 当前元素类型名称|.nodeType 当前元素类型)</li>
+<li>node.children<br>  只读 children则不包括文本节点，只有元素节点，子节点列表。</li>
+<li>node.firstChild<br>  只读 node里的第一个节点 （注意，标准下包含文本节点+元素节点  非标准下只含元素节点）推荐使用children[0]</li>
+<li>node.lastChild<br>  只读 node里的最后一个节点</li>
+<li>node.nextSibling || node.nextElementSibling<br>  下一个兄弟节点 （注意，这个包含文本节点，前者标准和非标，后者ie下没有）</li>
+<li>node.previousSibling || node.previousElementSibling<br>  上一个兄弟节点 （注意，这个包含文本节点，前者标准和非标，后者ie下没有）</li>
+<li>node.parentNode<br>  node的父亲节点，仅有一个 只读 无兼容问题。</li>
+<li>node.offsetParent<br>  只读 父节点（有定位的父节点，有多个则离他最近的一个）<br>  1.如果没有定位的父节点则博人body。<br>  2.如果他自身是定位则ie7以下为html，其他为body。<br>  3.如果他的父级有一个设置了zoom：1 则表示这个父级</li>
+</ul>
+<h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><ul>
+<li>document/node.createElement(“标签名”)<br>  创建元素节点。</li>
+<li>createTextNode(内容)<br>  创建文本节点。</li>
+<li>node.appendChild(node)<br>  把新的子节点添加到该node节点里面并且是最后面。这个新节点可以是文档中某个已存在的节点，也可以是创建新的节点。</li>
+<li>node.insertBefore(newnode必填,existingnode)<br>  在该节点里面指定的子节点前面插入新的子节点。这个新节点可以是文档中某个已存在的节点，也可以是创建新的节点。</li>
+<li>node.removeChild(node)<br>  删除该节点里面的node子节点。</li>
+<li>node.replaceChild(newnode,oldnode)<br>  新替换该节点里面旧(newnode,oldnode)这个新节点可以是文档中某个已存在的节点，也可以是创建新的节点。</li>
+<li>createAttribute()<br>  创建属性节点。</li>
+<li>element.getAttribute(属性名)<br>  返回指定的属性值。</li>
+<li>element.setAttribute(属性名，属性值)<br>  setAttribute() 方法添加指定的属性，并为其赋指定的值。如果这个指定的属性已存在，则仅设置/更改值</li>
+</ul>
+<h2 id="浏览器宽高"><a href="#浏览器宽高" class="headerlink" title="浏览器宽高"></a>浏览器宽高</h2><ul>
+<li>div容器宽: obj.style.width;</li>
+<li>div容器高: obj.style.height;</li>
+<li>网页可见区域宽: document.body.clientWidth;</li>
+<li>网页可见区域高: document.body.clientHeight;</li>
+<li>网页可见区域宽: document.body.offsetWidth   (包括边线的宽);</li>
+<li>网页可见区域高: document.body.offsetHeight  (包括边线的宽);</li>
+<li>网页正文全文宽: document.body.scrollWidth;</li>
+<li>网页正文全文高: document.body.scrollHeight;</li>
+<li>网页被卷去的高: document.body.scrollTop;</li>
+<li>网页被卷去的左: document.body.scrollLeft;</li>
+<li>网页正文部分上: window.screenTop;</li>
+<li>网页正文部分左: window.screenLeft;</li>
+<li>屏幕分辨率的高: window.screen.height;</li>
+<li>屏幕分辨率的宽: window.screen.width;</li>
+<li>屏幕可用工作区高度：window.screen.availHeight;</li>
+<li>屏幕可用工作区宽度：window.screen.availWidth;</li>
+<li>滚动条滚动距离:scrollLeft/scrollTop<br>  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;</li>
+<li>边框的厚度: clientLeft/clientTop</li>
+<li>鼠标位置: ev.clientX/ev.clientY</li>
+</ul>
+<h2 id="基于jQuery一些方法"><a href="#基于jQuery一些方法" class="headerlink" title="基于jQuery一些方法"></a>基于jQuery一些方法</h2><ul>
+<li>目标选择器距离网页页面顶端的高度<br>  var test = $(“.test”).offset().top;</li>
+<li>浏览器窗口的高度<br>  var win_h = $(window).height();</li>
+<li>滚动条的高度<br>  var scr_h = $(window).scrollTop();</li>
+<li>滚动窗口触发事件函数  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(window).scroll(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	//...</div><div class="line">&#125;)</div></pre></td></tr></table></figure></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Javascript/">Javascript</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="https://yk1062008412.github.io/2017/02/19/hello-world/" data-title="Hello World | yk" data-tsina="null" class="share clearfix">
+  <div data-url="https://yk1062008412.github.io/2017/06/05/原生js操作DOM元素/" data-title="原生js操作DOM元素 | yk" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -119,14 +179,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/02/20/CSS3新增属性/" title="CSS3新增属性(过渡、背景裁剪、动画、CSS变换)">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  CSS3新增属性(过渡、背景裁剪、动画、CSS变换)</span>
+
+<div class="next">
+<a href="/2017/05/18/SASS用法/"  title="SASS用法">
+ <strong>NEXT:</strong><br/> 
+ <span>SASS用法
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -136,7 +196,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#当前元素节点"><span class="toc-number">1.</span> <span class="toc-text">当前元素节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元素相关节点"><span class="toc-number">2.</span> <span class="toc-text">元素相关节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建节点"><span class="toc-number">3.</span> <span class="toc-text">创建节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器宽高"><span class="toc-number">4.</span> <span class="toc-text">浏览器宽高</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于jQuery一些方法"><span class="toc-number">5.</span> <span class="toc-text">基于jQuery一些方法</span></a></li></ol>
   </div>
 
 <div id="asidepart">
