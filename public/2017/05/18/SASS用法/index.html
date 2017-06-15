@@ -39,7 +39,7 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
 				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
 				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -58,7 +58,7 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
 					
 					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
 					</form>
 					
 					</li>
@@ -81,7 +81,7 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
     </p>
   <p class="article-time">
     <time datetime="2017-05-18T09:50:09.000Z" itemprop="datePublished">2017-05-18</time>
-    更新日期:<time datetime="2017-05-26T09:02:37.595Z" itemprop="dateModified">2017-05-26</time>
+    Updated:<time datetime="2017-06-15T04:17:59.000Z" itemprop="dateModified">2017-06-15</time>
     
   </p>
 </header>
@@ -89,7 +89,7 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
 		
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SASS起源"><span class="toc-number">1.</span> <span class="toc-text">SASS起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SASS简介"><span class="toc-number">2.</span> <span class="toc-text">SASS简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Ruby"><span class="toc-number">3.1.</span> <span class="toc-text">安装Ruby</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装SASS"><span class="toc-number">3.2.</span> <span class="toc-text">安装SASS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">4.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本语法"><span class="toc-number">5.</span> <span class="toc-text">基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后缀名"><span class="toc-number">5.1.</span> <span class="toc-text">后缀名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">5.2.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#普通变量"><span class="toc-number">5.2.1.</span> <span class="toc-text">普通变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#默认变量"><span class="toc-number">5.2.2.</span> <span class="toc-text">默认变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多值变量"><span class="toc-number">5.2.3.</span> <span class="toc-text">多值变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">5.3.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌套"><span class="toc-number">5.4.</span> <span class="toc-text">嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算"><span class="toc-number">5.5.</span> <span class="toc-text">运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS重用"><span class="toc-number">6.</span> <span class="toc-text">CSS重用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承-extend"><span class="toc-number">6.1.</span> <span class="toc-text">继承@extend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义代码块-mixin-include"><span class="toc-number">6.2.</span> <span class="toc-text">定义代码块@mixin,@include</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数mixin"><span class="toc-number">6.2.1.</span> <span class="toc-text">不带参数mixin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带参数mixin"><span class="toc-number">6.2.2.</span> <span class="toc-text">带参数mixin</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入CSS-import"><span class="toc-number">6.3.</span> <span class="toc-text">导入CSS @import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级用法"><span class="toc-number">7.</span> <span class="toc-text">高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if-else判断"><span class="toc-number">7.1.</span> <span class="toc-text">if,else判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for循环"><span class="toc-number">7.2.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while循环"><span class="toc-number">7.3.</span> <span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#each循环"><span class="toc-number">7.4.</span> <span class="toc-text">each循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义函数-function"><span class="toc-number">7.5.</span> <span class="toc-text">自定义函数@function</span></a></li></ol></li></ol>
 		</div>
 		
@@ -242,20 +242,20 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
 
 	
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SASS起源"><span class="toc-number">1.</span> <span class="toc-text">SASS起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SASS简介"><span class="toc-number">2.</span> <span class="toc-text">SASS简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Ruby"><span class="toc-number">3.1.</span> <span class="toc-text">安装Ruby</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装SASS"><span class="toc-number">3.2.</span> <span class="toc-text">安装SASS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">4.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本语法"><span class="toc-number">5.</span> <span class="toc-text">基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后缀名"><span class="toc-number">5.1.</span> <span class="toc-text">后缀名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">5.2.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#普通变量"><span class="toc-number">5.2.1.</span> <span class="toc-text">普通变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#默认变量"><span class="toc-number">5.2.2.</span> <span class="toc-text">默认变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多值变量"><span class="toc-number">5.2.3.</span> <span class="toc-text">多值变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">5.3.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌套"><span class="toc-number">5.4.</span> <span class="toc-text">嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算"><span class="toc-number">5.5.</span> <span class="toc-text">运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS重用"><span class="toc-number">6.</span> <span class="toc-text">CSS重用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#继承-extend"><span class="toc-number">6.1.</span> <span class="toc-text">继承@extend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义代码块-mixin-include"><span class="toc-number">6.2.</span> <span class="toc-text">定义代码块@mixin,@include</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数mixin"><span class="toc-number">6.2.1.</span> <span class="toc-text">不带参数mixin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#带参数mixin"><span class="toc-number">6.2.2.</span> <span class="toc-text">带参数mixin</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入CSS-import"><span class="toc-number">6.3.</span> <span class="toc-text">导入CSS @import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级用法"><span class="toc-number">7.</span> <span class="toc-text">高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#if-else判断"><span class="toc-number">7.1.</span> <span class="toc-text">if,else判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for循环"><span class="toc-number">7.2.</span> <span class="toc-text">for循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while循环"><span class="toc-number">7.3.</span> <span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#each循环"><span class="toc-number">7.4.</span> <span class="toc-text">each循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义函数-function"><span class="toc-number">7.5.</span> <span class="toc-text">自定义函数@function</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 			<li><a href="/categories/CSS/" title="CSS">CSS<sup>4</sup></a></li>
@@ -274,7 +274,7 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
@@ -298,7 +298,7 @@ CSS预处理器：CSS 预处理器用一种专门的编程语言，进行">
 
 
   <div class="rsspart" style="display:none;">
-	<a href="/atom.xml" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" title="rss">RSS</a>
 </div>
 
 </aside>
