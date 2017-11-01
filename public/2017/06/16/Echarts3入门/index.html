@@ -1,0 +1,397 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Echarts3入门 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="本文介绍Echarts 3的入门用法
+前言ECharts，缩写来自Enterprise Charts，商业级数据图表，是百度的一个开源的数据可视化工具，业界给予了很多赞誉。
+之前做项目一直用的是echarts2做的，后来同事说Echarts 3使用起来更方便，去官网一看，大部分实现过程和echart">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/06/16/Echarts3入门/" title="Echarts3入门" itemprop="url">Echarts3入门</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2017-06-16T03:10:09.000Z" itemprop="datePublished">2017-06-16</time>
+    更新日期:<time datetime="2017-11-01T07:40:38.000Z" itemprop="dateModified">2017-11-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取ECharts"><span class="toc-number">2.</span> <span class="toc-text">获取ECharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入-ECharts"><span class="toc-number">3.</span> <span class="toc-text">引入 ECharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">4.</span> <span class="toc-text">入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用及参数配置"><span class="toc-number">5.</span> <span class="toc-text">使用及参数配置</span></a></li></ol>
+		</div>
+		
+		<p>本文介绍Echarts 3的入门用法</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ECharts，缩写来自Enterprise Charts，商业级数据图表，是百度的一个开源的数据可视化工具，业界给予了很多赞誉。</p>
+<p>之前做项目一直用的是echarts2做的，后来同事说Echarts 3使用起来更方便，去官网一看，大部分实现过程和echarts2还是一样的，只是用echarts3不再需要通过 require 来加载echarts配置文件，不用其他的图表配置，直接引入echarts.js文件即可。而且Echarts 3的界面更加友好，用户体验比Echarts 2更加完美，体积也更小。</p>
+<h2 id="获取ECharts"><a href="#获取ECharts" class="headerlink" title="获取ECharts"></a>获取ECharts</h2><p>你可以通过以下几种方式获取 ECharts.js文件。</p>
+<ul>
+<li><p>从<a href="http://echarts.baidu.com/download.html" target="_blank" rel="external">官网下载</a>选择你需要的图表类型下载，根据开发者功能和体积上的需求，我们提供了不同打包的下载，如果你在体积上没有要求，可以直接下载<a href="http://echarts.baidu.com/dist/echarts.min.js" target="_blank" rel="external">完整版本</a>。开发环境建议下载<a href="http://echarts.baidu.com/dist/echarts.js" target="_blank" rel="external">源代码</a>版本，包含了常见的错误提示和警告。</p>
+</li>
+<li><p>在 ECharts 的 <a href="https://github.com/ecomfe/echarts" target="_blank" rel="external">GitHub</a> 上下载最新的 release 版本，解压出来的文件夹里的 dist 目录里可以找到最新版本的 echarts 库。</p>
+</li>
+<li><p>通过 npm 获取 echarts，npm install echarts –save，详见<a href="http://echarts.baidu.com/tutorial.html#在 webpack 中使用 ECharts" target="_blank" rel="external">“在 webpack 中使用 echarts”</a></p>
+</li>
+<li><p>cdn 引入，你可以在 <a href="https://cdnjs.com/libraries/echarts" target="_blank" rel="external">cdnjs</a>，<a href="https://npmcdn.com/echarts@latest/dist/" target="_blank" rel="external">npmcdn</a> 或者国内的 <a href="http://www.bootcdn.cn/" target="_blank" rel="external">bootcdn</a> 上找到 ECharts 的最新版本</p>
+</li>
+</ul>
+<h2 id="引入-ECharts"><a href="#引入-ECharts" class="headerlink" title="引入 ECharts"></a>引入 ECharts</h2><p>ECharts 3 开始不再强制使用 AMD 的方式按需引入，代码里也不再内置 AMD 加载器。因此引入方式简单了很多，只需要像普通的 JavaScript 库一样用 script 标签引入。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">    &lt;!-- 引入 ECharts 文件 --&gt;</div><div class="line">    &lt;script src=<span class="string">"echarts.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>在绘图前我们需要为 ECharts 准备一个具备高宽的 DOM 容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</div><div class="line">    &lt;div id=<span class="string">"main_1"</span> style=<span class="string">"width: 600px;height:400px;"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<p>然后就可以通过 <a href="http://echarts.baidu.com/api.html#echarts.init" target="_blank" rel="external">echarts.init</a> 方法初始化一个 echarts 实例并通过 <a href="http://echarts.baidu.com/api.html#echartsInstance.setOption" target="_blank" rel="external">setOption</a> 方法生成一个简单的柱状图，下面是完整代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">    &lt;title&gt;ECharts&lt;/title&gt;</div><div class="line">    &lt;!-- 引入 echarts.js --&gt;</div><div class="line">    &lt;script src=<span class="string">"echarts.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;!-- 为ECharts准备一个具备大小（宽高）的Dom --&gt;</div><div class="line">    &lt;div id=<span class="string">"main_1"</span> style=<span class="string">"width: 600px;height:400px;"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">        // 基于准备好的dom，初始化echarts实例</div><div class="line">        var myChart = echarts.init(document.getElementById(<span class="string">'main_1'</span>));</div><div class="line"></div><div class="line">        // 指定图表的配置项和数据</div><div class="line">        var option = &#123;</div><div class="line">            title: &#123;</div><div class="line">                text: <span class="string">'ECharts 入门示例'</span></div><div class="line">            &#125;,</div><div class="line">            tooltip: &#123;&#125;,</div><div class="line">            legend: &#123;</div><div class="line">                data:[<span class="string">'销量'</span>]</div><div class="line">            &#125;,</div><div class="line">            xAxis: &#123;</div><div class="line">                data: [<span class="string">"衬衫"</span>,<span class="string">"羊毛衫"</span>,<span class="string">"雪纺衫"</span>,<span class="string">"裤子"</span>,<span class="string">"高跟鞋"</span>,<span class="string">"袜子"</span>]</div><div class="line">            &#125;,</div><div class="line">            yAxis: &#123;&#125;,</div><div class="line">            series: [&#123;</div><div class="line">                name: <span class="string">'销量'</span>,</div><div class="line">                <span class="built_in">type</span>: <span class="string">'bar'</span>,</div><div class="line">                data: [5, 20, 36, 10, 10, 20]</div><div class="line">            &#125;]</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        // 使用刚指定的配置项和数据显示图表。</div><div class="line">        myChart.setOption(option);</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>这样你的第一个图表就诞生了！</p>
+<div id="main_1" style="width: 600px;height:400px;"></div>
+
+<p>这是一个柱状图的实例，改变上面代码中series，type由bar改为line可生产折线图:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">series: [&#123;</div><div class="line">	name: <span class="string">'销量'</span>,</div><div class="line">	<span class="built_in">type</span>: <span class="string">'line'</span>,</div><div class="line">	data: [5, 20, 36, 10, 10, 20]</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<h2 id="使用及参数配置"><a href="#使用及参数配置" class="headerlink" title="使用及参数配置"></a>使用及参数配置</h2><p>我们根据官网的一个<a href="http://echarts.baidu.com/demo.html#bar1" target="_blank" rel="external">示例</a>来讲解一下，下面就是相关的参数配置说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    // 基于准备好的dom，初始化echarts实例</div><div class="line">    var myChart = echarts.init(document.getElementById(<span class="string">'demo1'</span>));</div><div class="line"></div><div class="line">    // 指定图表的配置项和数据</div><div class="line">    var option = &#123;</div><div class="line">        title : &#123;</div><div class="line">            text: <span class="string">'某地区蒸发量和降水量'</span>,//大标题</div><div class="line">            // textStyle: &#123;</div><div class="line">            //     color: <span class="string">'#3491D0'</span></div><div class="line">            // &#125;,//标题颜色配置，源码已注释</div><div class="line">            subtext: <span class="string">'纯属虚构'</span>  // 小标题</div><div class="line">        &#125;,</div><div class="line">        tooltip : &#123;</div><div class="line">            trigger: <span class="string">'axis'</span> //提示框组件。，可自定义</div><div class="line">        &#125;,</div><div class="line">        legend: &#123;</div><div class="line">            data:[<span class="string">'蒸发量'</span>,<span class="string">'降水量'</span>] //图例组件.图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。</div><div class="line">        &#125;,</div><div class="line">        toolbox: &#123; </div><div class="line">        //工具栏。内置有导出图片，数据视图，动态类型切换，数据区域缩放，重置五个工具。</div><div class="line">            show : <span class="literal">true</span>,</div><div class="line">            feature : &#123;</div><div class="line">                mark : &#123;show: <span class="literal">true</span>&#125;,</div><div class="line">                dataView : &#123;show: <span class="literal">true</span>, <span class="built_in">read</span>Only: <span class="literal">false</span>&#125;,//数据视图</div><div class="line">                magicType : &#123;show: <span class="literal">true</span>, <span class="built_in">type</span>: [<span class="string">'line'</span>, <span class="string">'bar'</span>]&#125;,//柱状很折线切换配置</div><div class="line">                restore : &#123;show: <span class="literal">true</span>&#125;,//重置</div><div class="line">                saveAsImage : &#123;show: <span class="literal">true</span>&#125;//保存图片</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        calculable : <span class="literal">true</span>,//是否显示拖拽用的手柄（手柄能拖拽调整选中范围）。默认<span class="literal">false</span></div><div class="line">        xAxis : [</div><div class="line">            &#123;   //直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放左右两个 x 轴</div><div class="line">                <span class="built_in">type</span> : <span class="string">'category'</span>,</div><div class="line">                data : [<span class="string">'1月'</span>,<span class="string">'2月'</span>,<span class="string">'3月'</span>,<span class="string">'4月'</span>,<span class="string">'5月'</span>,<span class="string">'6月'</span>,<span class="string">'7月'</span>,<span class="string">'8月'</span>,<span class="string">'9月'</span>,<span class="string">'10月'</span>,<span class="string">'11月'</span>,<span class="string">'12月'</span>],</div><div class="line">                boundaryGap: <span class="literal">true</span>,</div><div class="line">                name: <span class="string">"月份"</span></div><div class="line">                // axisLabel:&#123;</div><div class="line">                //     interval: <span class="string">'auto'</span>,</div><div class="line">                //     //rotate:45,倾斜度 -90 至 90 默认为0</div><div class="line">                //     margin:8,</div><div class="line">                //     textStyle:&#123;</div><div class="line">                //          //data 的字体配置</div><div class="line">                //         fontWeight:<span class="string">"normal"</span>,</div><div class="line">                //         color:<span class="string">"#3491D0"</span></div><div class="line">                //     &#125;</div><div class="line">                // &#125;,</div><div class="line">                // nameTextStyle:&#123;</div><div class="line">                //      //横坐标说明 的字体配置，本例中“月份”</div><div class="line">                //     color:<span class="string">"#3491D0"</span>,</div><div class="line">                //     fontSize: 14  </div><div class="line">                // &#125;</div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        yAxis : [</div><div class="line">            &#123;</div><div class="line">                <span class="built_in">type</span> : <span class="string">'value'</span>,</div><div class="line">                name: <span class="string">'数量'</span></div><div class="line">                // axisLabel:&#123;</div><div class="line">                //         textStyle:&#123;</div><div class="line">                //             fontWeight:<span class="string">"normal"</span>,</div><div class="line">                //             color:<span class="string">"#3491D0"</span></div><div class="line">                //         &#125;</div><div class="line">                //     &#125;,</div><div class="line">                // splitLine: &#123;</div><div class="line">                // 	lineStyle: &#123;</div><div class="line">                //     	color: <span class="string">'#233e53'</span>,           </div><div class="line">                // 	&#125;</div><div class="line">                // &#125; ,</div><div class="line">                // nameTextStyle:&#123;</div><div class="line">                //     color:<span class="string">"#3491D0"</span>,</div><div class="line">                //     fontSize: 14 </div><div class="line">                // &#125;  </div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        series : [</div><div class="line">            &#123;</div><div class="line">                name:<span class="string">'蒸发量'</span>,</div><div class="line">                <span class="built_in">type</span>:<span class="string">'bar'</span>,</div><div class="line">                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],</div><div class="line">                markPoint : &#123;</div><div class="line">                    //蒸发量最大值，最小值</div><div class="line">                    data : [</div><div class="line">                        &#123;<span class="built_in">type</span> : <span class="string">'max'</span>, name: <span class="string">'最大值'</span>&#125;,</div><div class="line">                        &#123;<span class="built_in">type</span> : <span class="string">'min'</span>, name: <span class="string">'最小值'</span>&#125;</div><div class="line">                    ]</div><div class="line">                &#125;,</div><div class="line">                markLine : &#123;</div><div class="line">                    //平均值</div><div class="line">                    data : [</div><div class="line">                        &#123;<span class="built_in">type</span> : <span class="string">'average'</span>, name: <span class="string">'平均值'</span>&#125;</div><div class="line">                    ]</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                name:<span class="string">'降水量'</span>,</div><div class="line">                <span class="built_in">type</span>:<span class="string">'bar'</span>,</div><div class="line">                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],</div><div class="line">                markPoint : &#123;</div><div class="line">                    data : [</div><div class="line">                        &#123;name : <span class="string">'年最高'</span>, value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18&#125;,</div><div class="line">                        &#123;name : <span class="string">'年最低'</span>, value : 2.3, xAxis: 11, yAxis: 3&#125;</div><div class="line">                    ]</div><div class="line">                &#125;,</div><div class="line">                markLine : &#123;</div><div class="line">                    data : [</div><div class="line">                        &#123;<span class="built_in">type</span> : <span class="string">'average'</span>, name : <span class="string">'平均值'</span>&#125;</div><div class="line">                    ]</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;;</div><div class="line">    // 使用刚指定的配置项和数据显示图表。</div><div class="line">    myChart.setOption(option);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>本例效果图：</p>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main_2" style="width: 800px;height:500px;"></div>
+
+<p>本文参考 <a href="http://echarts.baidu.com/tutorial.html#5 分钟上手 ECharts" target="_blank" rel="external">echarts官网案例</a></p>
+<p>本章完！</p>
+<script type="text/javascript" src="/js/echarts.min.js"></script>
+<script type="text/javascript" src="/js/my/echarts3_draw.js"></script>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Echarts/">Echarts</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2017/06/16/Echarts3入门/" data-title="Echarts3入门 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/08/01/Linux常用命令/" title="Linux常用命令">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Linux常用命令</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/06/15/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取ECharts"><span class="toc-number">2.</span> <span class="toc-text">获取ECharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入-ECharts"><span class="toc-number">3.</span> <span class="toc-text">引入 ECharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门"><span class="toc-number">4.</span> <span class="toc-text">入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用及参数配置"><span class="toc-number">5.</span> <span class="toc-text">使用及参数配置</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>4</sup></a></li>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Javascript/" title="Javascript">Javascript<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Echarts/" title="Echarts">Echarts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTML/" title="HTML">HTML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/tags/SASS/" title="SASS">SASS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Shell/" title="Shell">Shell<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/前端面试/" title="前端面试">前端面试<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2017 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

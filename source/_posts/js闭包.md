@@ -29,9 +29,13 @@ console.log("a: " + a + ", b: " + b);	//a: 1, b: undefined
 ``` bash
 function fn(){
 	var b = 5;
-	return b;
+	function fn2(){
+		console.log(n);
+	}
+	return fn2;
 }
-console.log(fn());	//5
+var result = fn();
+result();	//5
 ```
 
 实践证明，这样是可以获取到b元素值的。没错，这就是最简单的js闭包。

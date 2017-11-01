@@ -11,3 +11,11 @@ date: 2017-02-19 16:00:54
 <a href="http://weibo.com/yk1062008412" target="_blank">新浪微博</a><br/>
 <a href="https://github.com/yk1062008412" target="_blank">GitHub</a><br/>
 <a href="http://blog.sina.com.cn/yk1062008412" target="_blank">新浪博客</a>
+
+朋友的博客，欢迎围观！
+
+- [龙零](https://zhezaoyizhuding.github.io/) Android知识点
+
+- [maorLi'Blog](https://xdlmr.github.io/) Web前端开发
+
+- [Liwd](https://liwd.51liwd.cc/) PHP开发

@@ -57,8 +57,6 @@ date: 2017-02-19 20:05:41
 
 ### 2.2 Android开发
 
-- [龙零](https://zhezaoyizhuding.github.io/) Android知识点
-
 ## 3. 教学课程
 
 - [慕课网](http://www.imooc.com/)
