@@ -39,6 +39,7 @@ date: 2017-02-19 20:05:41
 - [DropzoneJS](http://www.dropzonejs.com/) 拖动上传文件
 - [Nodejs](https://nodejs.org/zh-cn/)
 - [croppie](http://www.croppic.net/) 前端图片裁剪插件
+- [TinyPNG](https://tinypng.com/) 压缩jpg或png图片
 
 ### 1.3 常用技术
 
