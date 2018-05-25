@@ -1,0 +1,411 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>初识移动端 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="本文主要讲述刚接触移动端的开发人员可能遇到的一些坑。
+移动端的Click事件click事件，对于移动端的兼容性不是很好，有的设备上可能会失效问题。
+有时候在由于一些原因，需要在 li 标签上添加点击事件，这时候使用click点击事件就可能会失灵。即点击非 a 链接或 button 按钮的时候，cli">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/05/24/初识移动端/" title="初识移动端" itemprop="url">初识移动端</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-05-24T08:18:21.000Z" itemprop="datePublished">2018-05-24</time>
+    更新日期:<time datetime="2018-05-25T06:12:11.688Z" itemprop="dateModified">2018-05-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动端的Click事件"><span class="toc-number">1.</span> <span class="toc-text">移动端的Click事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#touchend"><span class="toc-number">1.1.</span> <span class="toc-text">touchend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tap"><span class="toc-number">1.2.</span> <span class="toc-text">tap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css"><span class="toc-number">1.3.</span> <span class="toc-text">css</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动端适配rem"><span class="toc-number">2.</span> <span class="toc-text">移动端适配rem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单适配"><span class="toc-number">2.1.</span> <span class="toc-text">简单适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小米官网写法"><span class="toc-number">2.2.</span> <span class="toc-text">小米官网写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信分享的缩略图和简介"><span class="toc-number">3.</span> <span class="toc-text">微信分享的缩略图和简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#video视频播放问题"><span class="toc-number">4.</span> <span class="toc-text">video视频播放问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清除微信H5缓存"><span class="toc-number">5.</span> <span class="toc-text">清除微信H5缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IOS端"><span class="toc-number">5.1.</span> <span class="toc-text">IOS端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android端"><span class="toc-number">5.2.</span> <span class="toc-text">Android端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信H5的a链接点击失灵"><span class="toc-number">6.</span> <span class="toc-text">微信H5的a链接点击失灵</span></a></li></ol>
+		</div>
+		
+		<p>本文主要讲述刚接触移动端的开发人员可能遇到的一些坑。</p>
+<h2 id="移动端的Click事件"><a href="#移动端的Click事件" class="headerlink" title="移动端的Click事件"></a>移动端的Click事件</h2><p>click事件，对于移动端的兼容性不是很好，有的设备上可能会失效问题。</p>
+<p>有时候在由于一些原因，需要在 li 标签上添加点击事件，这时候使用click点击事件就可能会失灵。即点击非 a 链接或 button 按钮的时候，click事件不起作用。</p>
+<p>click事件触发机制为：touchstart -&gt; touchend -&gt; click</p>
+<p>解决方法：</p>
+<h3 id="touchend"><a href="#touchend" class="headerlink" title="touchend"></a>touchend</h3><p>使用touchend代替click(不推荐)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(document).on(<span class="string">'touchend'</span>,<span class="string">'#btn'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">  //add event code...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>  touchend事件不推荐使用，因为：touchend事件在页面滚动时有个问题。在滚动完成后，如果当前触点的位置所指的元素绑定了touchend事件，这时便会触发该元素的touchend事件，造成误操作。</p>
+<h3 id="tap"><a href="#tap" class="headerlink" title="tap"></a>tap</h3><p>使用tap代替click(常用，推荐)</p>
+<p>这里有一个需要注意的地方，就是js的原生事件中是没有tap事件的，需要用jq框架或mui等框架封装的tap事件。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(document).on(<span class="string">'tap'</span>,<span class="string">'#btn'</span>,<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">  //add event code...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><p>给需要点击的标签添加CSS属性。</p>
+<p>比如需要点击ul列表中的每个li项，可以给 li 添加 css 属性,使其支持click点击事件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ul &gt; li &#123;cursor:pointer;&#125;</div></pre></td></tr></table></figure>
+<p>  这个方法我这边使用目前没出现什么问题，不清楚具体的内核解析过程。</p>
+<h2 id="移动端适配rem"><a href="#移动端适配rem" class="headerlink" title="移动端适配rem"></a>移动端适配rem</h2><p>移动端的适配一直以来，对开发人员就是一个比较难以解决的问题，我也只是把我接触过的适配方法写下来：</p>
+<p>首先就是每个页面必须的声明部分</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"</span>&gt;</div></pre></td></tr></table></figure>
+<h3 id="简单适配"><a href="#简单适配" class="headerlink" title="简单适配"></a>简单适配</h3><p>适配代码需要放在css文件引入之前运行。css单位使用rem.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">window.onload = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">  /*720代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100代表换算比例，这里写100是</div><div class="line">    为了以后好算,比如，你测量的一个宽度是100px,就可以写为1rem,以及1px=0.01rem等等*/</div><div class="line">  getRem(720,100)</div><div class="line">&#125;;</div><div class="line">window.onresize = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">  getRem(720,100)</div><div class="line">&#125;;</div><div class="line"><span class="keyword">function</span> getRem(pwidth,prem)&#123;</div><div class="line">  var html = document.getElementsByTagName(<span class="string">"html"</span>)[0];</div><div class="line">  var oWidth = document.body.clientWidth || document.documentElement.clientWidth;</div><div class="line">  html.style.fontSize = oWidth/pwidth*prem + <span class="string">"px"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="小米官网写法"><a href="#小米官网写法" class="headerlink" title="小米官网写法"></a>小米官网写法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">!<span class="keyword">function</span>(n)&#123;</div><div class="line">  var e=n.document, //获取document</div><div class="line">  t=e.documentElement,  //获取根节点html</div><div class="line">  i=720,  //初始值720px</div><div class="line">  d=i/100,  //假设100px为1rem，那么720px为7.2rem</div><div class="line">  o=<span class="string">"orientationchange"</span><span class="keyword">in</span> n?<span class="string">"orientationchange"</span>:<span class="string">"resize"</span>, //判断是否有改变横屏事件，没有的话用resize事件</div><div class="line">  a=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      var n=t.clientWidth||320; //获取手机屏幕宽度</div><div class="line">      n &gt; 720 &amp;&amp; (n=720), //手机屏幕宽度大于720px默认设置为720px，即最大宽度为720px </div><div class="line">      t.style.fontSize=n/d+<span class="string">"px"</span>    //设置根元素的字体大小为手机屏幕宽度/7.2,为上面自己定义的，当然你可以定义成别的，8.2，9.4都行</div><div class="line">  &#125;; </div><div class="line">  e.addEventListener &amp;&amp; (n.addEventListener(o,a,!1), //判断是否有addeventlistener方法，如果有，就绑定上面判断的o事件</div><div class="line">  e.addEventListener(<span class="string">"DOMContentLoaded"</span>,a,!1))    //绑定DOMContentLoaded事件</div><div class="line">&#125;(window);</div></pre></td></tr></table></figure>
+<h2 id="微信分享的缩略图和简介"><a href="#微信分享的缩略图和简介" class="headerlink" title="微信分享的缩略图和简介"></a>微信分享的缩略图和简介</h2><p>官方文档链接 <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115" target="_blank" rel="external">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115</a></p>
+<p>声明shareWx方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> shareWx(url,img,title,desc,callBack)&#123;</div><div class="line">  $.ajax(&#123;</div><div class="line">    url: <span class="string">'******'</span>, //获取微信公众平台的各种参数接口</div><div class="line">    <span class="built_in">type</span>: <span class="string">"POST"</span>,</div><div class="line">    data: &#123;</div><div class="line">      url: window.location.href,</div><div class="line">      appid: <span class="string">"****"</span> //微信公众号的appid</div><div class="line">    &#125;,</div><div class="line">    dataType: <span class="string">"json"</span>,</div><div class="line">    success: <span class="keyword">function</span> (data) &#123;</div><div class="line">      <span class="keyword">if</span> (data.nonceStr != null &amp;&amp; data.nonceStr != <span class="string">""</span>) &#123;</div><div class="line">        wx.config(&#123;</div><div class="line">          debug: <span class="literal">false</span>, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过<span class="built_in">log</span>打出，仅在pc端时才会打印。</div><div class="line">          appId: data.appId, // 必填，公众号的唯一标识</div><div class="line">          timestamp: data.timestamp, // 必填，生成签名的时间戳</div><div class="line">          nonceStr: data.nonceStr, // 必填，生成签名的随机串</div><div class="line">          signature: data.signature,// 必填，签名，见附录1</div><div class="line">          jsApiList: [<span class="string">'onMenuShareTimeline'</span>, <span class="string">'onMenuShareAppMessage'</span>, <span class="string">'hideAllNonBaseMenuItem'</span>, <span class="string">'showMenuItems'</span>,<span class="string">'addCard'</span>] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2</div><div class="line">        &#125;);</div><div class="line">        //分享链接的缩略图</div><div class="line">        var imgUrl = img;</div><div class="line">        //分享链接的链接地址</div><div class="line">        var lineLink = url;</div><div class="line">        //分享链接的描述信息</div><div class="line">        var descContent = desc;</div><div class="line">        //分享链接的标题</div><div class="line">        var shareTitle = title;</div><div class="line">        //一般为空就可以</div><div class="line">        var appid = <span class="string">''</span>;</div><div class="line">        //分享给好友</div><div class="line">        wx.ready(<span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">          wx.onMenuShareTimeline(&#123;</div><div class="line">            title: shareTitle, // 分享标题</div><div class="line">            link: lineLink, // 分享链接</div><div class="line">            imgUrl: imgUrl, // 分享图标</div><div class="line">            success: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">              // 用户确认分享后执行的回调函数</div><div class="line">              <span class="keyword">if</span>(typeof callBack == <span class="string">"function"</span>)&#123;</div><div class="line">                callBack();</div><div class="line">              &#125;</div><div class="line">            &#125;,</div><div class="line">            cancel: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">              // 用户取消分享后执行的回调函数</div><div class="line">            &#125;</div><div class="line">          &#125;);</div><div class="line">          wx.onMenuShareAppMessage(&#123;</div><div class="line">            title: shareTitle, // 分享标题</div><div class="line">            desc: descContent, // 分享描述</div><div class="line">            link: lineLink, // 分享链接</div><div class="line">            imgUrl: imgUrl, // 分享图标</div><div class="line">            <span class="built_in">type</span>: <span class="string">''</span>, // 分享类型,music、video或link，不填默认为link</div><div class="line">            dataUrl: <span class="string">''</span>, // 如果<span class="built_in">type</span>是music或video，则要提供数据链接，默认为空</div><div class="line">            success: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">              // 用户确认分享后执行的回调函数</div><div class="line">              <span class="keyword">if</span>(typeof callBack == <span class="string">"function"</span>)&#123;</div><div class="line">                callBack();</div><div class="line">              &#125;</div><div class="line">            &#125;,</div><div class="line">            cancel: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">              // 用户取消分享后执行的回调函数</div><div class="line">            &#125;</div><div class="line">          &#125;);</div><div class="line">          wx.hideAllNonBaseMenuItem();</div><div class="line">          wx.showMenuItems(&#123;</div><div class="line">            menuList: [<span class="string">'menuItem:share:appMessage'</span>,<span class="string">'menuItem:share:timeline'</span>] // 要显示的菜单项，所有menu项见附录3</div><div class="line">          &#125;);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        wx.error(<span class="keyword">function</span> (res) &#123;</div><div class="line">          //alert(<span class="string">"验证不通过"</span>);</div><div class="line">          // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</div><div class="line">        &#125;);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>调用分享的方法，调用前需要在页面先引入微信官方提供的js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 页面引入</div><div class="line">&lt;script src=<span class="string">"//res.wx.qq.com/open/js/jweixin-1.0.0.js"</span>&gt;&lt;/script&gt;  //页面引入js文件</div><div class="line">// 调用方法</div><div class="line">var url = <span class="string">"***"</span>;    //分享链接的URL</div><div class="line">var img = <span class="string">"test.jpg"</span>; //分享的缩略图</div><div class="line">var title = <span class="string">"***"</span>;    //分享链接的标题</div><div class="line">var content = <span class="string">"****"</span>; //分享链接的描述信息</div><div class="line">shareWx(url, img, title, content);  //调用方法</div></pre></td></tr></table></figure>
+<p>附录1：<a href="https://mp.weixin.qq.com/wiki?action=doc&amp;id=mp1421141115&amp;t=0.3462185509276481#62" target="_blank" rel="external">JS-SDK使用权限签名算法</a><br>附录2：<a href="https://mp.weixin.qq.com/wiki?action=doc&amp;id=mp1421141115&amp;t=0.3462185509276481#63" target="_blank" rel="external">所有JS接口列表</a><br>附录3：<a href="https://mp.weixin.qq.com/wiki?action=doc&amp;id=mp1421141115&amp;t=0.3462185509276481#64" target="_blank" rel="external">所有菜单项列表</a></p>
+<h2 id="video视频播放问题"><a href="#video视频播放问题" class="headerlink" title="video视频播放问题"></a>video视频播放问题</h2><p>有的视频，使用video标签播放的时候，Android端可以播放，但IOS端有时候不能播放视频。</p>
+<p>可以转换为 .mp4 格式。</p>
+<p>不过有时候 .mp4 格式可能也会无法播放，这是因为 mp4 格式中，视频编码方式也需要设置正确。</p>
+<p>这里我用【格式工厂】软件来说明。</p>
+<p>格式工厂 -&gt; mp4 -&gt; 输出配置 -&gt; 视频编码:AVC(H264)</p>
+<img src="/2018/05/24/初识移动端/format.jpg" alt="格式工厂" title="格式工厂">
+<h2 id="清除微信H5缓存"><a href="#清除微信H5缓存" class="headerlink" title="清除微信H5缓存"></a>清除微信H5缓存</h2><p>之前在调试开发的过程中，遇到一个问题，就是：无论怎样刷新微信页面，或者重启web服务器，都无法清除缓存的css和js数据。</p>
+<p>现在推荐2种不同手机的清除缓存方法，用来清除微信浏览器缓存。</p>
+<h3 id="IOS端"><a href="#IOS端" class="headerlink" title="IOS端"></a>IOS端</h3><ul>
+<li>IOS端浏览器内置的刷新，貌似可以清除css和js缓存，我这边测试的时候，是可以清除缓存的。</li>
+<li>IOS端：我 -&gt; 设置 -&gt; 通用 -&gt; 微信存储空间 -&gt; 清理微信缓存。即可清除缓存。</li>
+</ul>
+<h3 id="Android端"><a href="#Android端" class="headerlink" title="Android端"></a>Android端</h3><p>在微信浏览器访问 <a href="http://debugx5.qq.com" target="_blank" rel="external">http://debugx5.qq.com</a> (X5 调试页面)，然后滚动到页面最下面。</p>
+<p>勾选 Cookie, 文件缓存, 广告过滤缓存, DNS缓存 ,然后点击右侧的 “清除” 按钮。即可清除缓存。</p>
+<img src="/2018/05/24/初识移动端/clean.jpg" alt="清理缓存" title="清理缓存">
+<p><em>注意：此方法不适用于IOS端。</em></p>
+<h2 id="微信H5的a链接点击失灵"><a href="#微信H5的a链接点击失灵" class="headerlink" title="微信H5的a链接点击失灵"></a>微信H5的a链接点击失灵</h2><p>微信内置浏览器的 a 链接，来回跳转几次就出现了跳转加载进度条，但是就是不跳转，也没有任何反应的情况。</p>
+<p>解决办法：</p>
+<p>给 a 链接的 href 属性添加任意参数，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=<span class="string">"www.baidu.com?2018"</span>&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
+<p>就可以解决 a 链接不跳转的问题。</p>
+<hr>
+<p>以上是我在开发过程中遇到的问题，后续再更新。。。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/移动端/">移动端</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/移动端开发/">移动端开发</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2018/05/24/初识移动端/" data-title="初识移动端 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/03/21/苏宁易购面试总结/"  title="苏宁易购面试总结">
+ <strong>NEXT:</strong><br/> 
+ <span>苏宁易购面试总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#移动端的Click事件"><span class="toc-number">1.</span> <span class="toc-text">移动端的Click事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#touchend"><span class="toc-number">1.1.</span> <span class="toc-text">touchend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tap"><span class="toc-number">1.2.</span> <span class="toc-text">tap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css"><span class="toc-number">1.3.</span> <span class="toc-text">css</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动端适配rem"><span class="toc-number">2.</span> <span class="toc-text">移动端适配rem</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单适配"><span class="toc-number">2.1.</span> <span class="toc-text">简单适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小米官网写法"><span class="toc-number">2.2.</span> <span class="toc-text">小米官网写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信分享的缩略图和简介"><span class="toc-number">3.</span> <span class="toc-text">微信分享的缩略图和简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#video视频播放问题"><span class="toc-number">4.</span> <span class="toc-text">video视频播放问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清除微信H5缓存"><span class="toc-number">5.</span> <span class="toc-text">清除微信H5缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IOS端"><span class="toc-number">5.1.</span> <span class="toc-text">IOS端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android端"><span class="toc-number">5.2.</span> <span class="toc-text">Android端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信H5的a链接点击失灵"><span class="toc-number">6.</span> <span class="toc-text">微信H5的a链接点击失灵</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>4</sup></a></li>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Javascript/" title="Javascript">Javascript<sup>2</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>4</sup></a></li>
+		
+			<li><a href="/categories/移动端开发/" title="移动端开发">移动端开发<sup>1</sup></a></li>
+		
+			<li><a href="/categories/面试/" title="面试">面试<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Echarts/" title="Echarts">Echarts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTML/" title="HTML">HTML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>4</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/tags/SASS/" title="SASS">SASS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Shell/" title="Shell">Shell<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/前端面试/" title="前端面试">前端面试<sup>2</sup></a></li>
+		
+			<li><a href="/tags/移动端/" title="移动端">移动端<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
