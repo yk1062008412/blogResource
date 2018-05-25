@@ -1,6 +1,6 @@
 // 标准柱状图
 (function draw1() {
-	// 基于准备好的dom，初始化echarts实例
+ // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main_1'));
 
     // 指定图表的配置项和数据
@@ -28,7 +28,7 @@
 
 // 降水量图
 (function draw2(){
-	// 基于准备好的dom，初始化echarts实例
+ // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main_2'));
 
     // 指定图表的配置项和数据
@@ -92,9 +92,9 @@
                 //         }
                 //     },
                 // splitLine: {
-                // 	lineStyle: {
-                //     	color: '#233e53',           
-                // 	}
+                //   lineStyle: {
+                //       color: '#233e53',           
+                //   }
                 // } ,
                 // nameTextStyle:{
                 //     color:"#3491D0",
@@ -141,4 +141,4 @@
     };
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
-})();
+})(); 
