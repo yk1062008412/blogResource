@@ -1,0 +1,426 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS世界 | yk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="yk">
+    
+    <meta name="description" content="CSS变量: currentColor含义: 表示当前的标签所继承的文字颜色。
+例如:1234div&amp;#123;    color: red;    border: 1px solid currentColor;&amp;#125;
+则表示字体为红色，边框跟随字体的当前颜色，即为红色。
+块级元素 !== d">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="yk" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.png">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="yk" title="yk"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="yk">yk</a></h1>
+				<h2 class="blog-motto">无巧不成书之草色遥看</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/share">分享</a></li>
+					
+						<li><a href="/essay">随笔</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/04/10/CSS世界/" title="CSS世界" itemprop="url">CSS世界</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://yk1062008412.github.io" title="yk">yk</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2019-04-10T02:50:51.000Z" itemprop="datePublished">2019-04-10</time>
+    更新日期:<time datetime="2019-04-10T02:52:19.007Z" itemprop="dateModified">2019-04-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS变量-currentColor"><span class="toc-number">1.</span> <span class="toc-text">CSS变量: currentColor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级元素-display-block"><span class="toc-number">2.</span> <span class="toc-text">块级元素 !== display:block</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文字少-居中-文字多-居左"><span class="toc-number">3.</span> <span class="toc-text">文字少,居中;文字多,居左</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#max-width和important"><span class="toc-number">4.</span> <span class="toc-text">max-width和important</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#img首屏替代图片"><span class="toc-number">5.</span> <span class="toc-text">img首屏替代图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#img的src和content"><span class="toc-number">6.</span> <span class="toc-text">img的src和content</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quotes属性"><span class="toc-number">7.</span> <span class="toc-text">quotes属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#content-计数器"><span class="toc-number">8.</span> <span class="toc-text">content 计数器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#counter-reset属性"><span class="toc-number">8.1.</span> <span class="toc-text">counter-reset属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#counter-increment属性"><span class="toc-number">8.2.</span> <span class="toc-text">counter-increment属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#counter-counters-方法"><span class="toc-number">8.3.</span> <span class="toc-text">counter()/counters()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级用法"><span class="toc-number">8.4.</span> <span class="toc-text">高级用法</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="CSS变量-currentColor"><a href="#CSS变量-currentColor" class="headerlink" title="CSS变量: currentColor"></a>CSS变量: currentColor</h2><p>含义: 表示当前的标签所继承的文字颜色。</p>
+<p>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    color: red;</div><div class="line">    border: 1px solid currentColor;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>则表示字体为红色，边框跟随字体的当前颜色，即为红色。</p>
+<h2 id="块级元素-display-block"><a href="#块级元素-display-block" class="headerlink" title="块级元素 !== display:block"></a>块级元素 !== display:block</h2><p>以下两个元素都是块级元素，但他们的display并不是block。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;li&gt;元素：默认display: list-item.</div><div class="line">&lt;table&gt;元素：默认display: table.</div></pre></td></tr></table></figure></p>
+<h2 id="文字少-居中-文字多-居左"><a href="#文字少-居中-文字多-居左" class="headerlink" title="文字少,居中;文字多,居左"></a>文字少,居中;文字多,居左</h2><p>文字少，一行可以显示完的话，需要居中显示；文字多于一行的话，需要靠左显示。</p>
+<p>html内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;p id=&quot;conMore&quot; class=&quot;content&quot;&gt;这里是文字&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>css样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.box &#123;</div><div class="line">    padding: 10px;</div><div class="line">    background-color: #cd0000;</div><div class="line">    text-align: center;</div><div class="line">&#125;</div><div class="line">.content &#123;</div><div class="line">    display: inline-block;</div><div class="line">    text-align: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="max-width和important"><a href="#max-width和important" class="headerlink" title="max-width和important"></a>max-width和important</h2><p>如果一个标签有如下css样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">div&#123;</div><div class="line">    width: 300px !important;</div><div class="line">    max-width: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>则，该标签最后的呈现样式为200px。</p>
+<h2 id="img首屏替代图片"><a href="#img首屏替代图片" class="headerlink" title="img首屏替代图片"></a>img首屏替代图片</h2><p>为了提高用户体验，首屏图片一般会用一张透明的图片占位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;transparent.png&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>实际上，这个透明占位图片也会占用带宽资源。可以这样实现来避免占用资源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;img /&gt;</div><div class="line">css:</div><div class="line">img&#123;</div><div class="line">    visibility: hidden;</div><div class="line">&#125;</div><div class="line">img[src]&#123;</div><div class="line">    visibility: visible;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意: 这里的<img>没有src属性，再强调一遍，是没有src属性，而不是src=””，因为src=””在很多浏览器下依然会有请求，而且请求的是当前页面数据。当图片的src属性缺省的时候，图片才不会有任何请求，是最高效的实现方式</strong></p>
+<h2 id="img的src和content"><a href="#img的src和content" class="headerlink" title="img的src和content"></a>img的src和content</h2><p>img属性的content内容显示优先级高于src的显示优先级。如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;img src=&quot;1.png&quot; /&gt;</div><div class="line">css:</div><div class="line">img&#123;</div><div class="line">    content: url(&apos;2.png&apos;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码最终的显示图片为 2.png。</p>
+<p><strong>注意：content属性改变的仅仅是视觉呈现，当我们以右键或其他方式开新窗口打开该图片或保存这张图片时，所打开或保存的还是原来src对应的图片。</strong></p>
+<h2 id="quotes属性"><a href="#quotes属性" class="headerlink" title="quotes属性"></a>quotes属性</h2><p>quotes 属性设置嵌套引用（embedded quotation）的引号类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;ask&quot;&gt;为什么要看&lt;span class=&quot;ask&quot;&gt;CSS世界&lt;/span&gt;这本书？&lt;/div&gt;</div><div class="line">&lt;div class=&quot;answer&quot;&gt;因为.....&lt;/div&gt;</div><div class="line">css:</div><div class="line">.ask&#123;</div><div class="line">    quotes: &apos;提问：“&apos; &apos;”&apos; &apos;《&apos; &apos;》&apos;;</div><div class="line">&#125;</div><div class="line">.answer&#123;</div><div class="line">    quotes: &apos;回答: “&apos; &apos;”&apos;;</div><div class="line">&#125;</div><div class="line">.ask:before, .answer:before&#123;</div><div class="line">    content: open-quote;</div><div class="line">&#125;</div><div class="line">.ask:after, .answer:after&#123;</div><div class="line">    content: close-quote;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>最终页面展示效果:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">提问：“为什么要看《CSS世界》这本书？”</div><div class="line">回答: “因为.....”</div></pre></td></tr></table></figure>
+<h2 id="content-计数器"><a href="#content-计数器" class="headerlink" title="content 计数器"></a>content 计数器</h2><h3 id="counter-reset属性"><a href="#counter-reset属性" class="headerlink" title="counter-reset属性"></a>counter-reset属性</h3><p>重置计数器，相当于给变量名赋起始值，表示从哪个数字开始计数。默认为0.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;counter&quot;&gt;这是一条信息&lt;/div&gt;</div><div class="line">css:</div><div class="line">.counter&#123;</div><div class="line">    counter-reset: first 1 second 2;</div><div class="line">&#125;</div><div class="line">.counter:before &#123; </div><div class="line">    content: counter(first); </div><div class="line">&#125;</div><div class="line">.counter:after &#123; </div><div class="line">    content: counter(second); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>最终页面展示效果:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1这是一条信息2</div></pre></td></tr></table></figure>
+<h3 id="counter-increment属性"><a href="#counter-increment属性" class="headerlink" title="counter-increment属性"></a>counter-increment属性</h3><p>计数器递增，表示每次计数的变化值。默认为1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;reset&quot;&gt;</div><div class="line">  &lt;div class=&quot;count-list&quot;&gt;列表&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;count-list&quot;&gt;列表&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;count-list&quot;&gt;列表&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;count-list&quot;&gt;列表&lt;/div&gt;</div><div class="line">  &lt;div class=&quot;count-list&quot;&gt;列表&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">css:</div><div class="line">.reset&#123;</div><div class="line">  counter-reset: index;</div><div class="line">&#125;</div><div class="line">.count-list:after&#123;</div><div class="line">  content: counter(index);</div><div class="line">  counter-increment: index;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>最终页面展示效果:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">列表1</div><div class="line">列表2</div><div class="line">列表3</div><div class="line">列表4</div><div class="line">列表5</div></pre></td></tr></table></figure>
+<p><strong>注意：需要在父元素中重置counter-reset，子元素才可以按顺序排列</strong></p>
+<h3 id="counter-counters-方法"><a href="#counter-counters-方法" class="headerlink" title="counter()/counters()方法"></a>counter()/counters()方法</h3><p>counter()/counters()是方法，不是属性。类似于CSS3中的calc()计算，表示计数功能。</p>
+<p>用法：</p>
+<ul>
+<li>counter(name): name为counter-reset的名字</li>
+<li>counter(name, style): style的值与list-style-type的值相同，代表计数的样式</li>
+<li>counters(name, string): string表示子序号的连接字符串</li>
+<li>counters(name, string, style)</li>
+</ul>
+<p>例如，将style设置为lower-roman：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.test&#123;</div><div class="line">    content: counter(index, lower-roman);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显示的就是罗马数字Ⅰ,Ⅱ,Ⅲ,Ⅳ……</p>
+<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><p>如下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div class=&quot;reset&quot;&gt;</div><div class="line">    &lt;div class=&quot;count-list&quot;&gt;这是一级列表</div><div class="line">        &lt;div class=&quot;reset&quot;&gt;</div><div class="line">            &lt;div class=&quot;count-list&quot;&gt;这是二级列表&lt;/div&gt;</div><div class="line">            &lt;div class=&quot;count-list&quot;&gt;这是二级列表</div><div class="line">                &lt;div class=&quot;reset&quot;&gt;</div><div class="line">                    &lt;div class=&quot;count-list&quot;&gt;这是三级列表&lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;count-list&quot;&gt;这是三级列表&lt;/div&gt;</div><div class="line">                    &lt;div class=&quot;count-list&quot;&gt;这是三级列表&lt;/div&gt;</div><div class="line">                &lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;div class=&quot;count-list&quot;&gt;这是二级列表&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;count-list&quot;&gt;这是一级列表&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;count-list&quot;&gt;这是一级列表</div><div class="line">        &lt;div class=&quot;reset&quot;&gt;</div><div class="line">            &lt;div class=&quot;count-list&quot;&gt;这是二级列表&lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">css:</div><div class="line">.reset&#123;</div><div class="line">  counter-reset: index;</div><div class="line">  padding-left: 20px;</div><div class="line">&#125;</div><div class="line">.count-list:before&#123;</div><div class="line">  content: counters(index, &apos;-&apos;) &apos;. &apos;;</div><div class="line">  counter-increment: index;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显示效果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">1. 这是一级列表</div><div class="line">  1-1. 这是二级列表</div><div class="line">  1-2. 这是二级列表</div><div class="line">    1-2-1. 这是三级列表</div><div class="line">    1-2-2. 这是三级列表</div><div class="line">    1-2-3. 这是三级列表</div><div class="line">  1-3. 这是二级列表</div><div class="line">2. 这是一级列表</div><div class="line">3. 这是一级列表</div><div class="line">  3-1. 这是二级列表</div></pre></td></tr></table></figure></p>
+<p><strong>注意: 一个容器里的counter-reset是唯一的，如果不小心把计数显示和计数重置元素以兄弟元素形式放在一起，就很可能会出现<a href="https://demo.cssworld.cn/4/1-19.php" target="_blank" rel="external">计数序号</a>错乱的情况</strong></p>
+<p>本章完！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CSS/">CSS</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://yk1062008412.github.io/2019/04/10/CSS世界/" data-title="CSS世界 | yk" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/04/10/js常用方法/" title="js常用方法">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  js常用方法</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/04/10/了解React-hook/"  title="了解React.hook">
+ <strong>NEXT:</strong><br/> 
+ <span>了解React.hook
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS变量-currentColor"><span class="toc-number">1.</span> <span class="toc-text">CSS变量: currentColor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级元素-display-block"><span class="toc-number">2.</span> <span class="toc-text">块级元素 !== display:block</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文字少-居中-文字多-居左"><span class="toc-number">3.</span> <span class="toc-text">文字少,居中;文字多,居左</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#max-width和important"><span class="toc-number">4.</span> <span class="toc-text">max-width和important</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#img首屏替代图片"><span class="toc-number">5.</span> <span class="toc-text">img首屏替代图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#img的src和content"><span class="toc-number">6.</span> <span class="toc-text">img的src和content</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#quotes属性"><span class="toc-number">7.</span> <span class="toc-text">quotes属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#content-计数器"><span class="toc-number">8.</span> <span class="toc-text">content 计数器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#counter-reset属性"><span class="toc-number">8.1.</span> <span class="toc-text">counter-reset属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#counter-increment属性"><span class="toc-number">8.2.</span> <span class="toc-text">counter-increment属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#counter-counters-方法"><span class="toc-number">8.3.</span> <span class="toc-text">counter()/counters()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级用法"><span class="toc-number">8.4.</span> <span class="toc-text">高级用法</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>6</sup></a></li>
+		
+			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
+		
+			<li><a href="/categories/Javascript/" title="Javascript">Javascript<sup>4</sup></a></li>
+		
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/categories/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/categories/前端开发/" title="前端开发">前端开发<sup>5</sup></a></li>
+		
+			<li><a href="/categories/移动端开发/" title="移动端开发">移动端开发<sup>2</sup></a></li>
+		
+			<li><a href="/categories/面试/" title="面试">面试<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>4</sup></a></li>
+		
+			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Echarts/" title="Echarts">Echarts<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTML/" title="HTML">HTML<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>9</sup></a></li>
+		
+			<li><a href="/tags/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/tags/SASS/" title="SASS">SASS<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Shell/" title="Shell">Shell<sup>3</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/前端面试/" title="前端面试">前端面试<sup>2</sup></a></li>
+		
+			<li><a href="/tags/小程序/" title="小程序">小程序<sup>1</sup></a></li>
+		
+			<li><a href="/tags/移动端/" title="移动端">移动端<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart" style="display:none;">
+	<a href="/atom.xml" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2019 
+		
+		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+      var html = [
+        '<a href="#" class="overlay" id="qrcode"></a>',
+        '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+        '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+        '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+        '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+        '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+        '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+        '<span title="Share to"></span>'
+        ].join('');
+      $this.append(html);
+      $('.article-share-qrcode').click(function(){
+        var imgSrc = $('#qrcode-pic').attr('data-src');
+        $('#qrcode-pic').attr('src', imgSrc);
+        $('#qrcode-pic').load(function(){
+            $('.qrcode strong').text(' ');
+        });
+      });
+});     
+</script>
+
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'null', 'null');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

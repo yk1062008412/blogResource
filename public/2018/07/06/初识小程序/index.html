@@ -10,7 +10,12 @@
     <meta name="author" content="yk">
     
     <meta name="description" content="本文主要讲述刚接触小程序的开发人员可能遇到的一些坑。
-wx.request真机一直fail">
+1.button在手机端有边框解决方案：
+  设置全局wxss样式
+1button::after&amp;#123;border:none;&amp;#125;
+2.小程序的wxss单位小程序使用 rpx 单位来进行开发。开发标准为iPhone6.
+3.图片
+由">
     
     
     
@@ -81,7 +86,7 @@ wx.request真机一直fail">
     </p>
   <p class="article-time">
     <time datetime="2018-07-06T03:13:35.000Z" itemprop="datePublished">2018-07-06</time>
-    更新日期:<time datetime="2018-07-06T03:15:46.178Z" itemprop="dateModified">2018-07-06</time>
+    更新日期:<time datetime="2019-04-10T02:35:41.078Z" itemprop="dateModified">2019-04-10</time>
     
   </p>
 </header>
@@ -90,11 +95,23 @@ wx.request真机一直fail">
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#wx-request真机一直fail"><span class="toc-number">1.</span> <span class="toc-text">wx.request真机一直fail</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-button在手机端有边框"><span class="toc-number">1.</span> <span class="toc-text">1.button在手机端有边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-小程序的wxss单位"><span class="toc-number">2.</span> <span class="toc-text">2.小程序的wxss单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-图片"><span class="toc-number">3.</span> <span class="toc-text">3.图片</span></a></li></ol>
 		</div>
 		
 		<p>本文主要讲述刚接触小程序的开发人员可能遇到的一些坑。</p>
-<h2 id="wx-request真机一直fail"><a href="#wx-request真机一直fail" class="headerlink" title="wx.request真机一直fail"></a>wx.request真机一直fail</h2>  
+<h2 id="1-button在手机端有边框"><a href="#1-button在手机端有边框" class="headerlink" title="1.button在手机端有边框"></a>1.button在手机端有边框</h2><p>解决方案：</p>
+<p>  设置全局wxss样式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">button::after&#123;border:none;&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-小程序的wxss单位"><a href="#2-小程序的wxss单位" class="headerlink" title="2.小程序的wxss单位"></a>2.小程序的wxss单位</h2><p>小程序使用 rpx 单位来进行开发。开发标准为iPhone6.</p>
+<h2 id="3-图片"><a href="#3-图片" class="headerlink" title="3.图片"></a>3.图片</h2><ul>
+<li><p>由于小程序有大小限制，所以wxss无法引入本地图片，只能转换为 base64，然后才可以进行 background-image 的设置。</p>
+</li>
+<li><p>image标签可以引入本地图片，但是不推荐这么做，会违背小程序的初衷，使小程序变得臃肿，可以少量使用icon图片。</p>
+</li>
+</ul>
+<hr>
+<p>以上是我在开发过程中遇到的问题，后续再更新。。。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -122,6 +139,14 @@ wx.request真机一直fail">
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2018/08/12/自己封装的js常用方法/" title="自己封装的js常用方法">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  自己封装的js常用方法</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2018/05/25/浏览器的各种XY距离/"  title="浏览器的各种XY距离">
@@ -139,7 +164,7 @@ wx.request真机一直fail">
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#wx-request真机一直fail"><span class="toc-number">1.</span> <span class="toc-text">wx.request真机一直fail</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-button在手机端有边框"><span class="toc-number">1.</span> <span class="toc-text">1.button在手机端有边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-小程序的wxss单位"><span class="toc-number">2.</span> <span class="toc-text">2.小程序的wxss单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-图片"><span class="toc-number">3.</span> <span class="toc-text">3.图片</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -151,13 +176,15 @@ wx.request真机一直fail">
 	<p class="asidetitle">分类</p>
 		<ul>
 		
-			<li><a href="/categories/CSS/" title="CSS">CSS<sup>4</sup></a></li>
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>6</sup></a></li>
 		
 			<li><a href="/categories/ECMAScript-6/" title="ECMAScript 6">ECMAScript 6<sup>1</sup></a></li>
 		
-			<li><a href="/categories/Javascript/" title="Javascript">Javascript<sup>2</sup></a></li>
+			<li><a href="/categories/Javascript/" title="Javascript">Javascript<sup>4</sup></a></li>
 		
 			<li><a href="/categories/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/categories/React/" title="React">React<sup>2</sup></a></li>
 		
 			<li><a href="/categories/hexo/" title="hexo">hexo<sup>1</sup></a></li>
 		
@@ -176,9 +203,9 @@ wx.request真机一直fail">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
-			<li><a href="/tags/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+			<li><a href="/tags/CSS/" title="CSS">CSS<sup>2</sup></a></li>
 		
-			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>3</sup></a></li>
+			<li><a href="/tags/CSS3/" title="CSS3">CSS3<sup>4</sup></a></li>
 		
 			<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 		
@@ -186,9 +213,11 @@ wx.request真机一直fail">
 		
 			<li><a href="/tags/HTML/" title="HTML">HTML<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>5</sup></a></li>
+			<li><a href="/tags/Javascript/" title="Javascript">Javascript<sup>9</sup></a></li>
 		
 			<li><a href="/tags/Linux/" title="Linux">Linux<sup>4</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
 		
 			<li><a href="/tags/SASS/" title="SASS">SASS<sup>1</sup></a></li>
 		
@@ -228,7 +257,7 @@ wx.request真机一直fail">
 		
 		
 	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2019 
 		
 		<a href="https://yk1062008412.github.io" target="_blank" title="yk">yk</a>
 		
